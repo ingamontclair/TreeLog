@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".LocateNewTree" />
+        <activity android:name=".PropertyList" />
+        <activity android:name=".LeafIdentification" />
+        <activity android:name=".TreeMeasurement" />
+        <activity android:name=".TreeTypeList"></activity>
     </application>
 
 </manifest>

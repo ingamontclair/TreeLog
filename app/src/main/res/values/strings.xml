@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">TreeLog</string>
+    <string-array name="property_type">
+        <item>City Property</item>
+        <item>Private Property</item>
+    </string-array>
+
+    <string-array name="tree_type">
+        <item>Deciduous Tree</item>
+        <item>Evergreen Tree</item>
+        <item>Flowering Tree</item>
+        <item>Fruit Tree</item>
+        <item>Christmas Tree</item>
+        <item>Rainforest Tree</item>
+    </string-array>
 </resources>
