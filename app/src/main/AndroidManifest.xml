@@ -20,7 +20,8 @@
         <activity android:name=".PropertyList" />
         <activity android:name=".LeafIdentification" />
         <activity android:name=".TreeMeasurement" />
-        <activity android:name=".TreeTypeList"></activity>
+        <activity android:name=".TreeTypeList" />
+        <activity android:name=".TreePit"></activity>
     </application>
 
 </manifest>
