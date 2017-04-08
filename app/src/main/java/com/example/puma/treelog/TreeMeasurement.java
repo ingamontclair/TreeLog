@@ -81,6 +81,8 @@ public class TreeMeasurement extends AppCompatActivity {
             if (view.getId() == R.id.btn_next) {
 //TODO: validate all fields and show alerts
 //TODO: save to serializable and move to the next page
+                Intent intent = new Intent(TreeMeasurement.this, TreePit.class);
+                startActivity(intent);
             }
         }
     }
