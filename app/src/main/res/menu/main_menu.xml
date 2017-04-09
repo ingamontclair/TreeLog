@@ -9,6 +9,8 @@
         android:title="List Trees" />
     <item android:id="@+id/menu_make_photo"
         android:title="Make a photo" />
+    <item android:id="@+id/menu_map"
+        android:title="Map"/>
     <item android:id="@+id/menu_exit"
         android:title="Exit" />
 </menu>

@@ -42,6 +42,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 //TODO: load camera for making picture (quick access for making photos)
                 Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.menu_map:
+                intent = new Intent(WelcomeActivity.this, MapsActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.menu_exit:
                 moveTaskToBack(true);
                 android.os.Process.killProcess(android.os.Process.myPid());
