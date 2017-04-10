@@ -13,5 +13,18 @@
         <item>Christmas Tree</item>
         <item>Rainforest Tree</item>
     </string-array>
+    <string-array name="biotic_source">
+        <item>Infected with insects</item>
+        <item>Ash disease</item>
+        <item>Damaged by animal</item>
+        <item>Fungus disease</item>
+    </string-array>
+    <string-array name="abiotic_source">
+        <item>Soil nutrient deficiencies</item>
+        <item>Air nutrient deficiencies</item>
+        <item>Lightning</item>
+        <item>Vehicles impacts</item>
+        <item>Drought</item>
+    </string-array>
     <string name="title_activity_maps">Map</string>
 </resources>

@@ -37,7 +37,9 @@ public class TreeMeasurement extends AppCompatActivity {
         editPlanted.setInputType(InputType.TYPE_NULL);
         editPlanted.setOnClickListener(new PlantedLstr());
         btn_next = (Button)findViewById(R.id.btn_next);
-        btn_next.setOnClickListener(new MoveNextLsatr());
+
+        btn_next.setOnClickListener(new MoveNextLstr());
+
         Intent treeMeasurment = getIntent();
         Bundle bundle = treeMeasurment.getExtras();
         if (bundle != null) {
@@ -75,7 +77,7 @@ public class TreeMeasurement extends AppCompatActivity {
 
     }
 
-    class MoveNextLsatr implements View.OnClickListener {
+    class MoveNextLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_next) {
