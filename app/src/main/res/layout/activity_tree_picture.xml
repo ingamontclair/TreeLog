@@ -119,6 +119,6 @@
         android:id="@+id/btn_commit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save new tree to Database"
+        android:text="Save tree to Database"
         />
 </LinearLayout>
