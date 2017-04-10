@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TreeLog</string>
+
     <string-array name="property_type">
         <item>City Property</item>
         <item>Private Property</item>
@@ -13,12 +14,14 @@
         <item>Christmas Tree</item>
         <item>Rainforest Tree</item>
     </string-array>
+
     <string-array name="biotic_source">
         <item>Infected with insects</item>
         <item>Ash disease</item>
         <item>Damaged by animal</item>
         <item>Fungus disease</item>
     </string-array>
+
     <string-array name="abiotic_source">
         <item>Soil nutrient deficiencies</item>
         <item>Air nutrient deficiencies</item>
@@ -26,5 +29,20 @@
         <item>Vehicles impacts</item>
         <item>Drought</item>
     </string-array>
+
     <string name="title_activity_maps">Map</string>
+
+    <string name="latitude_label">Latitude</string>
+    <string name="longitude_label">Longitude</string>
+    <string name="no_location_detected">
+        No location detected. Make sure location is enabled on the device.
+    </string>
+
+    <string name="no_geocoder_available">No geocoder available</string>
+    <string name="fetch_address">Fetch address</string>
+    <string name="address_found">Address found</string>
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="no_location_data_provided">No location data provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
 </resources>

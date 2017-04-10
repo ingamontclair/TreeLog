@@ -41,5 +41,11 @@
             android:name="com.example.puma.treelog.MapsActivity"
             android:label="@string/title_activity_maps" />
 
+        <!-- Service to asynchronously fetch a location address using a Geocoder. Setting the
+        android:exported attribute to "false" stops other apps from starting this
+        service, even when using an explicit intent. -->
+        <service
+            android:name=".utils.FetchAddressIntentService"
+            android:exported="false" />
     </application>
 </manifest>
