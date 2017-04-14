@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_tree_health"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.example.puma.treelog.TreeCondition"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.puma.treelog.TreeHealth">
-
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tree health information" />
-
-    <TextView
-        android:id="@+id/tv_treeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Here will be treeID" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,34 +52,44 @@
         android:text="Mark following hazard if necessarily"
         />
     <CheckBox
+        android:id="@+id/chb_forkedTrunks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forked Trunks "
+        android:text="Forked Trunks"
+        android:onClick="onHazardClicked"
         />
     <CheckBox
+        android:id="@+id/chb_decay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Signs of Decay"
+        android:onClick="onHazardClicked"
         />
     <CheckBox
+        android:id="@+id/chb_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dangerous balance (more than 10 degree)"
+        android:onClick="onHazardClicked"
         />
     <CheckBox
+        android:id="@+id/chb_brokenBranches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Broken or forked branches"
+        android:onClick="onHazardClicked"
         />
     <CheckBox
+        android:id="@+id/chb_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
         android:text="Remove tree?"
+        android:onClick="onHazardClicked"
         />
     <Button
         android:id="@+id/btn_health_next"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next"
         />

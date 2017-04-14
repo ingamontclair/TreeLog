@@ -16,6 +16,8 @@
     </string-array>
 
     <string-array name="biotic_source">
+        <item>None</item>
+        <item>Healthy</item>
         <item>Infected with insects</item>
         <item>Ash disease</item>
         <item>Damaged by animal</item>
@@ -23,6 +25,8 @@
     </string-array>
 
     <string-array name="abiotic_source">
+        <item>None</item>
+        <item>Healthy</item>
         <item>Soil nutrient deficiencies</item>
         <item>Air nutrient deficiencies</item>
         <item>Lightning</item>
@@ -45,4 +49,11 @@
     <string name="no_location_data_provided">No location data provided</string>
     <string name="service_not_available">Sorry, the service is not available</string>
     <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
+    <string name="enter_species_of_the_tree"><font size="15">enter species of the tree</font></string>
+    <string name="species_of_the_tree">Species of the tree</string>
+    <string name="type_of_the_tree">Type of the tree</string>
+    <string name="latitude_will_be_here"><font size="15">latitude will be here</font></string>
+    <string name="longitude_will_be_here"><font size="15">longitude will be here</font></string>
+    <string name="address_will_be_here"><font size="15">address will be here</font></string>
+    <string name="choose_property_type_from_list"><font size="15">choose property type from list</font></string>
 </resources>

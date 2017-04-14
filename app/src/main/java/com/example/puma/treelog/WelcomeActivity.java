@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class WelcomeActivity extends AppCompatActivity {
-
+    private Button btnLocateME; //button for fencing?
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        btnLocateME = (Button)findViewById(R.id.btn_locateMe);
+        btnLocateME.setOnClickListener(new LocateMELstr());
     }
 
     @Override
@@ -29,7 +33,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.menu_new_tree:
-                //TODO: start forms to make a new tree
+                //start activity to make a new tree
                 intent = new Intent(WelcomeActivity.this, LocateNewTree.class);
                 startActivity(intent);
                 Toast.makeText(WelcomeActivity.this, "New tree clicked", Toast.LENGTH_LONG).show();
@@ -53,6 +57,18 @@ public class WelcomeActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    class LocateMELstr implements View.OnClickListener {
+        //TODO: make a circle or fence which depends on a user location before starting all new/edit/delete etc functions
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.btn_locateMe){
+                //TODO: place fencing code here
+                //TODO: place map with user location and icons of the trees around (without filters)
+            }
+
         }
     }
 }

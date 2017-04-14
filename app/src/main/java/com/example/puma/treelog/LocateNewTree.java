@@ -27,6 +27,7 @@ import com.google.android.gms.location.LocationServices;
 
 public class LocateNewTree extends AppCompatActivity
         implements ConnectionCallbacks, OnConnectionFailedListener {
+    public static final String EXTRA_TREE_DATA = "EXTRA_TREE_DATA";
     private EditText mLatitudeText; //editText for Latitude
     private EditText mLongitudeText; //editText for Longitude
     private EditText mAddressText; //editText for Address
@@ -61,10 +62,10 @@ public class LocateNewTree extends AppCompatActivity
 
         mResultReceiver = new AddressResultReceiver(new Handler());
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
-
         mLatitudeText = (EditText) findViewById(R.id.edit_latitude);
         mLongitudeText = (EditText) findViewById(R.id.edit_longitude);
         mAddressText = (EditText) findViewById(R.id.edit_address);
+
         btnLocate = (Button) findViewById(R.id.btn_locate);
         btnNextLocate = (Button) findViewById(R.id.btn_next_locate);
         btnLocate.setOnClickListener(new LocateLstr());
@@ -72,11 +73,19 @@ public class LocateNewTree extends AppCompatActivity
         editPropertyType = (EditText) findViewById(R.id.edit_property);
         editPropertyType.setInputType(InputType.TYPE_NULL);
         editPropertyType.setOnClickListener(new PropertyTypeLstr());
-        Intent locateNewTree = getIntent();
-        Bundle bundle = locateNewTree.getExtras();
-        if (bundle != null) {
-            String tmpProperty = (String) bundle.get("propertyType");
-            editPropertyType.setText(tmpProperty);
+        //Intent locateNewTree = getIntent();
+        //Bundle bundle = locateNewTree.getExtras();
+        TreeData treeData = TreeSession.getInstance().getTreeData();
+        if (treeData == null){
+            treeData = new TreeData();
+            TreeSession.getInstance().setTreeData(treeData);
+
+        }
+        if (treeData != null) {
+            mLatitudeText.setText(treeData.getLatitude());
+            mLongitudeText.setText(treeData.getLongitude());
+            mAddressText.setText(treeData.getStreetAddress());
+            editPropertyType.setText(treeData.getPropertyType());
         }
 
         updateUIWidgets(true);
@@ -209,12 +218,17 @@ public class LocateNewTree extends AppCompatActivity
     private class LocationDataLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            //TODO: validate all fields for not being empty
+            //bean to save the obtained data for the next page
             if (view.getId() == R.id.btn_next_locate) {
-                showToast("Next page clicked");
+                //showToast("Next page clicked");
+                TreeData treeData = TreeSession.getInstance().getTreeData();
+                treeData.setLatitude(mLatitudeText.getText().toString());
+                treeData.setLongitude(mLongitudeText.getText().toString());
+                treeData.setStreetAddress(mAddressText.getText().toString());
+                treeData.setPropertyType(editPropertyType.getText().toString());
                 Intent intent = new Intent(LocateNewTree.this, LeafIdentification.class);
                 startActivity(intent);
-                //TODO: validate all fields for not being empty
-                //TODO: putexptra or serializable to save the obtained data for the next page
             }
         }
     }
@@ -222,9 +236,14 @@ public class LocateNewTree extends AppCompatActivity
     private class PropertyTypeLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            //TODO: use serializable to save data from Location Activity for the next page, besides Property Type list
-            Intent exIntent = new Intent(LocateNewTree.this, PropertyList.class);
-            startActivity(exIntent);
+            //use bean to save data from Location Activity for the next page, besides Property Type list
+            TreeData treeData = TreeSession.getInstance().getTreeData();
+            treeData.setLatitude(mLatitudeText.getText().toString());
+            treeData.setLongitude(mLongitudeText.getText().toString());
+            treeData.setStreetAddress(mAddressText.getText().toString());
+            treeData.setPropertyType(editPropertyType.getText().toString());
+            Intent intent = new Intent(LocateNewTree.this, PropertyList.class);
+            startActivity(intent);
         }
     }
 

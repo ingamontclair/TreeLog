@@ -1,12 +1,15 @@
 package com.example.puma.treelog;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import static com.example.puma.treelog.LocateNewTree.EXTRA_TREE_DATA;
 
 public class TreeTypeList extends AppCompatActivity {
     private ListView listView;
@@ -22,11 +25,10 @@ public class TreeTypeList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
-                //view.setBackgroundColor(Color.LTGRAY);
+                view.setBackgroundColor(Color.LTGRAY);
                 Intent exIntent=new Intent(TreeTypeList.this, TreeMeasurement.class);
-                //RegistrationData registrationData = (RegistrationData) getIntent().getSerializableExtra(EXTRA_REG_DATA);
-                //registrationData.setMajor(myItems[pstn]);
-                exIntent.putExtra("treeType",treeTypes[pstn]);
+                TreeData treeData = TreeSession.getInstance().getTreeData();
+                treeData.setTreeType(treeTypes[pstn]);
                 startActivity(exIntent);
             }
         });

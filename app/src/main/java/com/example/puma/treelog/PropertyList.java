@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import static com.example.puma.treelog.LocateNewTree.EXTRA_TREE_DATA;
+
 public class PropertyList extends AppCompatActivity {
     private ListView listView;
     private String[] propertyTypes;
@@ -16,6 +18,7 @@ public class PropertyList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_list);
+
         propertyTypes=getResources().getStringArray(R.array.property_type);
         listView=(ListView)findViewById(R.id.list_property);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,propertyTypes);
@@ -23,11 +26,10 @@ public class PropertyList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
-                //view.setBackgroundColor(Color.LTGRAY);
+                TreeData treeData = TreeSession.getInstance().getTreeData();
+                view.setBackgroundColor(Color.LTGRAY);
                 Intent exIntent=new Intent(PropertyList.this, LocateNewTree.class);
-                //RegistrationData registrationData = (RegistrationData) getIntent().getSerializableExtra(EXTRA_REG_DATA);
-                //registrationData.setMajor(myItems[pstn]);
-                exIntent.putExtra("propertyType",propertyTypes[pstn]);
+                treeData.setPropertyType(propertyTypes[pstn]);
                 startActivity(exIntent);
             }
         });

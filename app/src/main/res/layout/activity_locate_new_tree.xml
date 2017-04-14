@@ -21,15 +21,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="#DCEDC8"
+        android:textColor="#212121"
         android:text="Locate" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Check the obtainde information below before proceeding" />
+        android:text="Check the obtained information below before proceeding:" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -40,13 +42,13 @@
 
         <EditText
             android:id="@+id/edit_latitude"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="latitude will be here" />
+            android:hint="@string/latitude_will_be_here" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -57,9 +59,9 @@
 
         <EditText
             android:id="@+id/edit_longitude"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="longitude will be here" />
+            android:hint="@string/longitude_will_be_here" />
     </LinearLayout>
 
     <TextView
@@ -68,15 +70,15 @@
         android:text="Street Address:" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edit_address"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="address will be here" />
+            android:hint="@string/address_will_be_here" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -91,14 +93,13 @@
 
     <EditText
         android:id="@+id/edit_property"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="property type will be here" />
+        android:hint="@string/choose_property_type_from_list" />
 
     <Button
         android:id="@+id/btn_next_locate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="Next" />
 </LinearLayout>

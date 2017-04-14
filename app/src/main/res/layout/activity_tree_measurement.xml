@@ -11,26 +11,30 @@
     android:orientation="vertical"
     tools:context="com.example.puma.treelog.TreeMeasurement">
     <TextView
-    android:layout_width="wrap_content"
+    android:textColor="#212121"
+    android:textSize="18sp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Species of the tree"
+    android:text="@string/species_of_the_tree"
     />
     <EditText
         android:id="@+id/edit_species"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter species of the tree"
+        android:hint="@string/enter_species_of_the_tree"
         />
     <TextView
-        android:layout_width="wrap_content"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type of the tree"
+        android:text="@string/type_of_the_tree"
         />
     <EditText
         android:id="@+id/edit_treetype"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter type of the tree"
+        android:hint="chose tree type from list"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +43,7 @@
         />
     <EditText
         android:id="@+id/edit_planted"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="enter date when planted"
         />
@@ -50,7 +54,7 @@
         />
     <EditText
         android:id="@+id/edit_diametr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="enter diametr"
         />
@@ -61,13 +65,13 @@
         />
     <EditText
         android:id="@+id/edit_size"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="enter size of the tree"
         />
     <Button
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_next_meas"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Next"
         />

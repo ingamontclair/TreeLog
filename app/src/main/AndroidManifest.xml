@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +23,7 @@
         <activity android:name=".LeafIdentification" />
         <activity android:name=".TreeMeasurement" />
         <activity android:name=".TreeTypeList" />
-        <activity android:name=".TreePit"></activity>
+        <activity android:name=".TreePit" />
         <!--
                  The API key for Google Maps-based APIs is defined as a string resource.
                  (See the file "res/values/google_maps_api.xml").
@@ -32,20 +31,29 @@
                  You need a different API key for each encryption key, including the release key that is used to
                  sign the APK for publishing.
                  You can define the keys for the debug and release targets in src/debug/ and src/release/.
-             -->
+        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.example.puma.treelog.MapsActivity"
+            android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
 
-        <!-- Service to asynchronously fetch a location address using a Geocoder. Setting the
+        <!--
+        Service to asynchronously fetch a location address using a Geocoder. Setting the
         android:exported attribute to "false" stops other apps from starting this
-        service, even when using an explicit intent. -->
+        service, even when using an explicit intent.
+        -->
         <service
             android:name=".utils.FetchAddressIntentService"
             android:exported="false" />
+
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".TreeCondition" />
+        <activity android:name=".TreeFinalPic" />
+        <activity android:name=".BioticDamage" />
+        <activity android:name=".AbioticDamage"></activity>
     </application>
+
 </manifest>

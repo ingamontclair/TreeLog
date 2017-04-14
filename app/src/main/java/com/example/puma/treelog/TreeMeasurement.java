@@ -14,9 +14,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.example.puma.treelog.LocateNewTree.EXTRA_TREE_DATA;
+
 public class TreeMeasurement extends AppCompatActivity {
     private EditText editTreeType; //edit for tree type (family), ListView will be called here
     private EditText editPlanted;
+    private EditText editSpecies;
+    private EditText editTreeDiametr;
+    private EditText editTreeSize;
+    private TreeData treeData;
     private DatePickerDialog dpDialog;
     private SimpleDateFormat dateFormat;
     private Button btn_next; //button to move to the next page
@@ -24,6 +30,11 @@ public class TreeMeasurement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_measurement);
+        TreeData treeData = TreeSession.getInstance().getTreeData();
+        //treeData = (TreeData) getIntent().getSerializableExtra(EXTRA_TREE_DATA);
+        editSpecies = (EditText)findViewById(R.id.edit_species);
+        editTreeDiametr = (EditText)findViewById(R.id.edit_diametr);
+        editTreeSize = (EditText)findViewById(R.id.edit_size);
         //List of Types
         editTreeType = (EditText) findViewById(R.id.edit_treetype);
         editTreeType.setInputType(InputType.TYPE_NULL);
@@ -36,22 +47,25 @@ public class TreeMeasurement extends AppCompatActivity {
         editPlanted = (EditText) findViewById(R.id.edit_planted);//defining editText by id to work with DOB data
         editPlanted.setInputType(InputType.TYPE_NULL);
         editPlanted.setOnClickListener(new PlantedLstr());
-        btn_next = (Button)findViewById(R.id.btn_next);
-
+        btn_next = (Button)findViewById(R.id.btn_next_meas);
         btn_next.setOnClickListener(new MoveNextLstr());
-
-        Intent treeMeasurment = getIntent();
-        Bundle bundle = treeMeasurment.getExtras();
-        if (bundle != null) {
-            String tmpType = (String) bundle.get("treeType");
-            editTreeType.setText(tmpType);
+        if (treeData != null) {
+            editSpecies.setText(treeData.getSpecies());
+            editTreeDiametr.setText(treeData.getTreeDiametr());
+            editTreeSize.setText(treeData.getTreeSize());
+            editPlanted.setText(treeData.getDatePlanted());
+            editTreeType.setText(treeData.getTreeType());
         }
     }
 
     class TreeTypeLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            //TODO: use serializable to save data from TreeMeas Activity for the next page etc
+            TreeData treeData = TreeSession.getInstance().getTreeData();
+            treeData.setSpecies(editSpecies.getText().toString());
+            treeData.setDatePlanted(editPlanted.getText().toString());
+            treeData.setTreeDiametr(editTreeDiametr.getText().toString());
+            treeData.setTreeSize(editTreeSize.getText().toString());
             Intent exIntent = new Intent(TreeMeasurement.this, TreeTypeList.class);
             startActivity(exIntent);
         }
@@ -80,9 +94,14 @@ public class TreeMeasurement extends AppCompatActivity {
     class MoveNextLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.btn_next) {
+            if (view.getId() == R.id.btn_next_meas) {
 //TODO: validate all fields and show alerts
-//TODO: save to serializable and move to the next page
+                TreeData treeData = TreeSession.getInstance().getTreeData();
+                treeData.setSpecies(editSpecies.getText().toString());
+                treeData.setTreeType(editTreeType.getText().toString());
+                treeData.setDatePlanted(editPlanted.getText().toString());
+                treeData.setTreeDiametr(editTreeDiametr.getText().toString());
+                treeData.setTreeSize(editTreeSize.getText().toString());
                 Intent intent = new Intent(TreeMeasurement.this, TreePit.class);
                 startActivity(intent);
             }
