@@ -56,4 +56,7 @@
     <string name="longitude_will_be_here"><font size="15">longitude will be here</font></string>
     <string name="address_will_be_here"><font size="15">address will be here</font></string>
     <string name="choose_property_type_from_list"><font size="15">choose property type from list</font></string>
+    <string name="btnIntend">Capture Tree Pic</string>
+    <string name="album_name">Tree Pics</string>
+    <string name="cannot">Can not</string>
 </resources>

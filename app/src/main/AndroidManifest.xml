@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.puma.treelog">
 
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="12" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -49,7 +58,7 @@
             android:name=".utils.FetchAddressIntentService"
             android:exported="false" />
 
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".TakeTreePic" />
         <activity android:name=".TreeCondition" />
         <activity android:name=".TreeFinalPic" />
         <activity android:name=".BioticDamage" />

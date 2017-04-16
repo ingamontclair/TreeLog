@@ -44,6 +44,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_make_photo:
                 //TODO: load camera for making picture (quick access for making photos)
+                intent=new Intent(WelcomeActivity.this,TakeTreePic.class);
+                startActivity(intent);
                 Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_map:
