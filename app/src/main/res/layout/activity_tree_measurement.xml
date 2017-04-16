@@ -34,46 +34,46 @@
         android:id="@+id/edit_treetype"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="chose tree type from list"
+        android:hint="@string/chose_tree_type_from_list"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="When the tree was planted (apprx)"
+        android:text="@string/when_the_tree_was_planted_apprx"
         />
     <EditText
         android:id="@+id/edit_planted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter date when planted"
+        android:hint="@string/enter_date_when_planted"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Diametr of the tree"
+        android:text="@string/diametr_of_the_tree"
         />
     <EditText
         android:id="@+id/edit_diametr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter diametr"
+        android:hint="@string/enter_diametr"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Size of the tree"
+        android:text="@string/size_of_the_tree"
         />
     <EditText
         android:id="@+id/edit_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter size of the tree"
+        android:hint="@string/enter_size_of_the_tree"
         />
     <Button
         android:id="@+id/btn_next_meas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="@string/next"
         />
 
 </LinearLayout>

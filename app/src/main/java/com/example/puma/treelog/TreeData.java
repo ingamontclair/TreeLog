@@ -26,6 +26,25 @@ public class TreeData implements Serializable {
     private String photoPitURL; //url string  for photo of tree pit
     private String photoMainURL; //url string for the main photo
     private String dateCreated; // a date when a tree was created in DB
+    private String treeName; //Name of the tree to display in the list or on the map
+
+    public TreeData() {
+    }
+
+    public TreeData(String streetAddress, String propertyType, String treeType, String treeName) {
+        this.streetAddress = streetAddress;
+        this.propertyType = propertyType;
+        this.treeType = treeType;
+        this.treeName = treeName;
+    }
+
+    public String getTreeName() {
+        return treeName;
+    }
+
+    public void setTreeName(String treeName) {
+        this.treeName = treeName;
+    }
 
     public String getDateCreated() {
         return dateCreated;

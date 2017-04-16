@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         >
-        <Button android:text="@string/btnIntend" android:id="@+id/btnIntend"
+        <Button android:text="@string/btnIntend"
+            android:id="@+id/btnIntend"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="1" />

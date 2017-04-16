@@ -9,7 +9,7 @@
     tools:context="com.example.puma.treelog.TreeFinalPic"
     >
     <TextView
-        android:text="Upload picture before saving"
+        android:text="@string/upload_picture_before_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <LinearLayout

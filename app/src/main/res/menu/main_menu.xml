@@ -6,7 +6,7 @@
         app:showAsAction="never"
         />
     <item android:id="@+id/menu_list_tree"
-        android:title="List Trees" />
+        android:title="Tree List in area" />
     <item android:id="@+id/menu_make_photo"
         android:title="Make a photo" />
     <item android:id="@+id/menu_map"

@@ -44,19 +44,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Proceed"
+        android:text="@string/proceed"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="OR"
+        android:text="@string/or"
         />
     <Button
         android:id="@+id/btn_manual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Enter manually"
+        android:text="@string/enter_manually"
         />
 </LinearLayout>

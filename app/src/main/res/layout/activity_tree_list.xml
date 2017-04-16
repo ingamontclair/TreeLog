@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.puma.treelog.BioticDamage">
+    tools:context="com.example.puma.treelog.TreeList">
     <ListView
-        android:id="@+id/list_biotic"
+        android:id="@+id/lv_tree_list"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:hint="@string/pick_biotic_damage_from_list">
-    </ListView>
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector" />
 </LinearLayout>

@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tree health information" />
+        android:text="@string/tree_health_information" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,63 +20,63 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sources of tree damage:" />
+            android:text="@string/sources_of_tree_damage" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Biotic source" />
+            android:text="@string/biotic_source" />
         <EditText
             android:id="@+id/editBiotic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="choose biotic source here"
+            android:hint="@string/choose_biotic_source_here"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abiotic source"
+            android:text="@string/abiotic_source"
 
             />
         <EditText
             android:id="@+id/editAbiotic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="choose abiotic source here"
+            android:hint="@string/choose_abiotic_source_here"
             />
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mark following hazard if necessarily"
+        android:text="@string/mark_following_hazard_if_necessarily"
         />
     <CheckBox
         android:id="@+id/chb_forkedTrunks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forked Trunks"
+        android:text="@string/forked_trunks"
         android:onClick="onHazardClicked"
         />
     <CheckBox
         android:id="@+id/chb_decay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Signs of Decay"
+        android:text="@string/signs_of_decay"
         android:onClick="onHazardClicked"
         />
     <CheckBox
         android:id="@+id/chb_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dangerous balance (more than 10 degree)"
+        android:text="@string/dangerous_balance_more_than_10_degree"
         android:onClick="onHazardClicked"
         />
     <CheckBox
         android:id="@+id/chb_brokenBranches"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Broken or forked branches"
+        android:text="@string/broken_or_forked_branches"
         android:onClick="onHazardClicked"
         />
     <CheckBox
@@ -84,13 +84,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
-        android:text="Remove tree?"
+        android:text="@string/remove_tree"
         android:onClick="onHazardClicked"
         />
     <Button
         android:id="@+id/btn_health_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="@string/next"
         />
 </LinearLayout>

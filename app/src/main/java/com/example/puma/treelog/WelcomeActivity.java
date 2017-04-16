@@ -36,17 +36,19 @@ public class WelcomeActivity extends AppCompatActivity {
                 //start activity to make a new tree
                 intent = new Intent(WelcomeActivity.this, LocateNewTree.class);
                 startActivity(intent);
-                Toast.makeText(WelcomeActivity.this, "New tree clicked", Toast.LENGTH_LONG).show();
+                //Toast.makeText(WelcomeActivity.this, "New tree clicked", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_list_tree:
-                //TODO: start form with filter for listing trees
-                Toast.makeText(WelcomeActivity.this, "Clicked List os trees", Toast.LENGTH_LONG).show();
+                //start list tree activity in the fenced area
+                intent = new Intent (WelcomeActivity.this, TreeList.class);
+                startActivity(intent);
+                //Toast.makeText(WelcomeActivity.this, "Clicked List os trees", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_make_photo:
-                //TODO: load camera for making picture (quick access for making photos)
+                //load camera for making picture (quick access for making photos)
                 intent=new Intent(WelcomeActivity.this,TakeTreePic.class);
                 startActivity(intent);
-                Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
+                //Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_map:
                 intent = new Intent(WelcomeActivity.this, MapsActivity.class);

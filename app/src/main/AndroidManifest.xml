@@ -5,13 +5,14 @@
     <uses-sdk
         android:minSdkVersion="4"
         android:targetSdkVersion="12" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     <application
         android:allowBackup="true"
@@ -62,7 +63,12 @@
         <activity android:name=".TreeCondition" />
         <activity android:name=".TreeFinalPic" />
         <activity android:name=".BioticDamage" />
-        <activity android:name=".AbioticDamage"></activity>
+        <activity android:name=".AbioticDamage" />
+        <activity
+            android:name=".TreeHistory"
+            android:label="@string/title_activity_tree_history"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TreeList"></activity>
     </application>
 
 </manifest>
