@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/final_tree_pic"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/noimageicon23"
@@ -32,12 +33,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Upload"
-
+                android:id="@+id/btn_upload_final_pic"
+                android:onClick="uploadFinalTreePic"
                 />
             <Button
+                android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"
+                android:onClick="deleteFinalTreePic"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -84,6 +88,7 @@
         android:orientation="horizontal"
         >
         <ImageView
+            android:id="@+id/small_tree_pic"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/noimageicon23"
