@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class WelcomeActivity extends AppCompatActivity {
     private Button btnLocateME; //button for fencing?
     @Override
@@ -56,7 +58,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_exit:
                 moveTaskToBack(true);
-                android.os.Process.killProcess(android.os.Process.myPid());
+                //android.os.Process.killProcess(android.os.Process.myPid());
+                //System.exit(1);
+                FirebaseAuth.getInstance().signOut();
+                finish();
                 System.exit(1);
                 return true;
             default:
