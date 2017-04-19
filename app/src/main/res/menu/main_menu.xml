@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/menu_new_tree"
+    <item
+        android:id="@+id/menu_new_tree"
         android:title="New Tree"
-        app:showAsAction="never"
-        />
-    <item android:id="@+id/menu_list_tree"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_list_tree"
         android:title="Tree List in area" />
-    <item android:id="@+id/menu_make_photo"
+    <item
+        android:id="@+id/menu_make_photo"
         android:title="Make a photo" />
-    <item android:id="@+id/menu_map"
-        android:title="Map"/>
-    <item android:id="@+id/menu_exit"
-        android:title="Exit"
-        />
+    <item
+        android:id="@+id/menu_map"
+        android:title="Map" />
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Logout" />
+    <item
+        android:id="@+id/menu_exit"
+        android:title="Exit" />
 </menu>
