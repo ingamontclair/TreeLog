@@ -9,6 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+
 public class BioticDamage extends AppCompatActivity {
     private ListView lv_biotic;
     private String[] bioticTypes;

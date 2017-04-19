@@ -8,10 +8,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
 import com.example.puma.treelog.utils.CustomizedListAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class TreeList extends AppCompatActivity {
     ListView treeListView;

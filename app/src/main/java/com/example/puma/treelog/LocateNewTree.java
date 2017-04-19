@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FetchAddressIntentService;
 import com.google.android.gms.common.ConnectionResult;

@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

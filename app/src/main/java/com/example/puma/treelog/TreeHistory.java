@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+
 public class TreeHistory extends AppCompatActivity {
     private TextView tv_species;
     private TextView tv_tree_street_address;

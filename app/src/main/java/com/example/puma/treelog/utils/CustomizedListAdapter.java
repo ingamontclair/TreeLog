@@ -10,10 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.puma.treelog.R;
-import com.example.puma.treelog.TreeData;
+import com.example.puma.treelog.models.TreeData;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Agni on 4/16/2017.

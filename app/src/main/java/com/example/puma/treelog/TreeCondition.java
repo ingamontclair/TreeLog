@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import java.util.ArrayList;
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+
 import java.util.HashMap;
 
 public class TreeCondition extends AppCompatActivity {

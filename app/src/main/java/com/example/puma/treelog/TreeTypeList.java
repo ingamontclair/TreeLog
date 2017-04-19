@@ -9,7 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import static com.example.puma.treelog.LocateNewTree.EXTRA_TREE_DATA;
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
 
 public class TreeTypeList extends AppCompatActivity {
     private ListView listView;

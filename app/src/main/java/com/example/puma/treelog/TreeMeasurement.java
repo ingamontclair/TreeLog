@@ -10,11 +10,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-import static com.example.puma.treelog.LocateNewTree.EXTRA_TREE_DATA;
 
 public class TreeMeasurement extends AppCompatActivity {
     private EditText editTreeType; //edit for tree type (family), ListView will be called here
