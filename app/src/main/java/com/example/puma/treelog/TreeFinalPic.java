@@ -93,7 +93,7 @@ public class TreeFinalPic extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
                 String dateCreated = df.format(c.getTime());
                 treeData.setDateCreated(dateCreated);
-//TODO: all TreeData is ready for commit - place for commit !!!
+//all TreeData is ready for commit - place for commit !!!
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference("Tree");
                 myref.push().setValue(treeData);
 

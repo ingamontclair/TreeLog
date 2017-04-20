@@ -1,6 +1,8 @@
 package com.example.puma.treelog.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Agni on 4/13/2017.
@@ -27,6 +29,15 @@ public class TreeData implements Serializable {
     private String photoMainURL; //url string for the main photo
     private String dateCreated; // a date when a tree was created in DB
     private String treeName; //Name of the tree to display in the list or on the map
+    private List <TreeHistoryData> treeHistoryDatas;
+
+    public List<TreeHistoryData> getTreeHistoryDatas() {
+        return treeHistoryDatas;
+    }
+
+    public void setTreeHistoryDatas(List<TreeHistoryData> treeHistoryDatas) {
+        this.treeHistoryDatas = treeHistoryDatas;
+    }
 
     public TreeData() {
     }

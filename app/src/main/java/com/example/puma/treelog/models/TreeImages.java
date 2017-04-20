@@ -12,7 +12,23 @@ public class TreeImages implements Serializable{
     private String treeImageURL; //image URL
     private String treeDescription; //tree Image description i. e. leaf, trunk, blooming etc
     private String treeImageUploadDate; //tree image modified date
+    private TreeHistoryData treeHistoryData;
 
+    public TreeHistoryData getTreeHistoryData() {
+        return treeHistoryData;
+    }
+
+    public void setTreeHistoryData(TreeHistoryData treeHistoryData) {
+        this.treeHistoryData = treeHistoryData;
+    }
+
+    public TreeImages() {
+    }
+
+    public TreeImages(String treeDescription) {
+        this.treeDescription = treeDescription;
+
+    }
     public String getTreeImageID() {
         return treeImageID;
     }

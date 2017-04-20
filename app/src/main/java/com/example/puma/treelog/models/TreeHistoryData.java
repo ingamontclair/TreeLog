@@ -1,6 +1,9 @@
 package com.example.puma.treelog.models;
 
+import com.example.puma.treelog.*;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Agni on 4/19/2017.
@@ -19,6 +22,24 @@ public class TreeHistoryData implements Serializable{
     private String treeHistoryPitURL; //URL of tree pit changed
     private String treeHistoryPitComments; //new comments for tree pit condition
     private String treeHistoryHazard; //new tree hazard info
+    private TreeData treeData;
+    private List<TreeImages> treeImages;
+
+    public List<TreeImages> getTreeImages() {
+        return treeImages;
+    }
+
+    public void setTreeImages(List<TreeImages> treeImages) {
+        this.treeImages = treeImages;
+    }
+
+    public TreeData getTreeData() {
+        return treeData;
+    }
+
+    public void setTreeData(TreeData treeData) {
+        this.treeData = treeData;
+    }
 
     public String getTreeHistoryID() {
         return treeHistoryID;
