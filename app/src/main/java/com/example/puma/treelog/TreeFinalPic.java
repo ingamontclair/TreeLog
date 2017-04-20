@@ -19,11 +19,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.example.puma.treelog.utils.FireBase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class TreeFinalPic extends AppCompatActivity {
     private Button btnCommit;
     private TextView tvDateCreated;
     private int PICK_FINAL_IMAGE_REQUEST = 1;
     ImageView imgFinal,imgSmall;
+    DatabaseReference myref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,7 @@ public class TreeFinalPic extends AppCompatActivity {
         btnCommit = (Button)findViewById(R.id.btn_commit);
         btnCommit.setOnClickListener(new CommitLstr());
         tvDateCreated = (TextView)findViewById(R.id.tv_dateCreated);
+
 
         if (treeData != null) {
 
@@ -88,6 +94,8 @@ public class TreeFinalPic extends AppCompatActivity {
                 String dateCreated = df.format(c.getTime());
                 treeData.setDateCreated(dateCreated);
 //TODO: all TreeData is ready for commit - place for commit !!!
+                DatabaseReference myref= FireBase.getInstance().getFireBaseReference("Tree");
+                myref.push().setValue(treeData);
 
             }
         }
