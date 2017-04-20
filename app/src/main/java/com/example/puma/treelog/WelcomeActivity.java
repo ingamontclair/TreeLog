@@ -1,19 +1,44 @@
 package com.example.puma.treelog;
 
+import android.*;
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.puma.treelog.models.*;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class WelcomeActivity extends AppCompatActivity {
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
+public class WelcomeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private Button btnLocateME; //button for fencing?
+
+    /**
+     * Provides the entry point to Google Play services.
+     */
+    protected GoogleApiClient mGoogleApiClient;
+
+    /**
+     * Represents a geographical location.
+     */
+    protected Location mLastLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
         if (user != null){
 
         }
+        buildGoogleApiClient();
     }
 
     @Override
@@ -57,8 +83,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 //Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_map:
-                intent = new Intent(WelcomeActivity.this, MapsActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(WelcomeActivity.this, MapsActivity.class));
+                Toast.makeText(WelcomeActivity.this, "Map", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_logout:
                 FirebaseAuth.getInstance().signOut();
@@ -79,15 +105,91 @@ public class WelcomeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
     class LocateMELstr implements View.OnClickListener {
-        //TODO: make a circle or fence which depends on a user location before starting all new/edit/delete etc functions
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.btn_locateMe){
-                //TODO: place fencing code here
-                //TODO: place map with user location and icons of the trees around (without filters)
-            }
+            if (view.getId() == R.id.btn_locateMe) {
+                    if (ActivityCompat.checkSelfPermission(WelcomeActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                        if (mLastLocation != null) {
+                            double lat = mLastLocation.getLatitude();
+                            double lon = mLastLocation.getLongitude();
+                            startActivity(new Intent(WelcomeActivity.this, MapsActivity.class)
+                                    .putExtra("latitude", lat).putExtra("longitude", lon));
+                            Toast.makeText(WelcomeActivity.this, "Locate Me", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(WelcomeActivity.this, "No connection", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        ActivityCompat.requestPermissions(WelcomeActivity.this,
+                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                    }
+                }
+        }
+    }
 
+    // Checks for user response to permission request
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(WelcomeActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                        if (mLastLocation != null) {
+                            double lat = mLastLocation.getLatitude();
+                            double lon = mLastLocation.getLongitude();
+                            startActivity(new Intent(WelcomeActivity.this, MapsActivity.class)
+                                    .putExtra("latitude", lat).putExtra("longitude", lon));
+                            Toast.makeText(WelcomeActivity.this, "Locate Me", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(WelcomeActivity.this, "No connection", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Builds a GoogleApiClient. Uses the addApi() method to request the LocationServices API.
+     */
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
         }
     }
 }

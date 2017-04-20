@@ -148,7 +148,7 @@ public class LocateNewTree extends AppCompatActivity
                 // applications that do not require a fine-grained location and that do not need location
                 // updates. Gets the best and most recent location currently available, which may be null
                 // in rare cases when a location is not available.
-                if (ActivityCompat.checkSelfPermission(LocateNewTree.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(LocateNewTree.this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
                     if (mLastLocation != null) {
                         mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
@@ -157,6 +157,33 @@ public class LocateNewTree extends AppCompatActivity
                         updateUIWidgets(false);
                     } else {
                         showToast(getString(R.string.no_location_detected));
+                    }
+                } else {
+                    ActivityCompat.requestPermissions(LocateNewTree.this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+                }
+            }
+        }
+    }
+
+    // Checks for user response to permission request
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(LocateNewTree.this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                        if (mLastLocation != null) {
+                            mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+                            mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+                            startIntentService();
+                            updateUIWidgets(false);
+                        } else {
+                            showToast(getString(R.string.no_location_detected));
+                        }
                     }
                 }
             }

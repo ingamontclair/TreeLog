@@ -1,5 +1,6 @@
 package com.example.puma.treelog;
 
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
@@ -22,10 +23,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ArrayList<String> locations = new ArrayList<>();
 
+    double lat;
+    double lon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        Intent intent = getIntent();
+        lat = intent.getDoubleExtra("latitude",0);
+        lon = intent.getDoubleExtra("longitude", 0);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -35,30 +42,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Geocoder geocoder = new Geocoder(this);
 
         // Populate list with examples
-        locations.add("Camden, NJ");
-        locations.add("The Victor's Pub, NJ");
-        locations.add("Norma's Grocery Camden,NJ");
-        locations.add("Antioch Baptist Church, Camden, NJ");
+        locations.add("Clifton, NJ");
+        locations.add("186 Ackerman Avenue, Clifton, NJ");
+        locations.add("76 Center Street, Clifton, NJ");
+        locations.add("27 Cutler Street, Clifton, NJ");
         locations.add("Cooper Plaza Commons, Camden, NJ");
         locations.add("704 Chelton Ave, NJ");
         locations.add("1573 S 8th St, NJ");
 
-        // Sets up Camden focus
-        Geocoder geocoder = new Geocoder(this);
-        try {
-            List<Address> nameCord = geocoder.getFromLocationName(locations.get(0),1);
-            if (nameCord != null && nameCord.size() > 0) {
-                double lat = nameCord.get(0).getLatitude();
-                double lng = nameCord.get(0).getLongitude();
-                LatLng vita = new LatLng(lat, lng);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vita, 13));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        // If the user chooses 'Locate Me'
+        if (lat != 0 && lon != 0) {
+            LatLng myLocale = new LatLng(lat, lon);
+            mMap.addMarker(new MarkerOptions().position(myLocale).title("You are here"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocale,17));
         }
-
+        // If the user chooses 'Map'
+        else {
+            // Sets up Camden focus
+            try {
+                List<Address> camdenCoord = geocoder.getFromLocationName("Camden, NJ", 1);
+                if (camdenCoord != null && camdenCoord.size() > 0) {
+                    double camLat = camdenCoord.get(0).getLatitude();
+                    double camLon = camdenCoord.get(0).getLongitude();
+                    LatLng camCord = new LatLng(camLat, camLon);
+                    mMap.addMarker(new MarkerOptions().position(camCord).title("Camden, NJ"));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(camCord,13));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         // Populates the map with markers
         int ct;
         for (ct = 0; ct < locations.size(); ct++) {
