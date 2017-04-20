@@ -14,36 +14,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Identify a tree by leaf: " />
+        android:text="@string/identify_a_tree_by_leaf" />
 
     <Button
         android:id="@+id/btn_upload_leaf"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Upload leaf photo" />
+        android:background="@drawable/regular_button"
+        android:text="@string/upload_leaf_photo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Do you want to proceed with this identified data?"
+        android:text="@string/do_you_want_to_proceed_with_this_identified_data"
         />
     <EditText
         android:id="@+id/edit_tree_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="tree name"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="*all other identified data will be displayed on the next forms"
+        android:text="@string/all_other_identified_data_will_be_displayed_on_the_next_forms"
         />
     <Button
         android:id="@+id/btn_proceed"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/regular_button"
         android:text="@string/proceed"
         />
     <TextView
@@ -54,9 +56,10 @@
         />
     <Button
         android:id="@+id/btn_manual"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/regular_button"
         android:text="@string/enter_manually"
         />
 </LinearLayout>

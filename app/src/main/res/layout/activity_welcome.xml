@@ -27,8 +27,10 @@
         android:id="@+id/btn_locateMe"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        android:background="#DCEDC8"
+        android:background="@drawable/regular_button"
         android:text="@string/locate_me"
-        android:textColor="#212121" />
+        android:textColor="#212121"
+
+        />
 </LinearLayout>
 </LinearLayout>

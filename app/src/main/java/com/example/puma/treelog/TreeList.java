@@ -40,7 +40,7 @@ public class TreeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(TreeList.this, "List item clicked " + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TreeList.this, "List item clicked " + position, Toast.LENGTH_SHORT).show();
                 TreeSession.getInstance().setTreeData(treeList.get(position));
                 Intent intent = new Intent(TreeList.this,TreeHistory.class);
                 startActivity(intent);

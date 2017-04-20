@@ -29,6 +29,7 @@ public class TreeHistory extends AppCompatActivity {
     private TextView tv_hazard;
     private TextView tv_tree_pit_comments;
     private Button btnEdit;
+    private Button btnPics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,10 @@ public class TreeHistory extends AppCompatActivity {
         tv_tree_pit_comments = (TextView)findViewById(R.id.tv_tree_pit);
         btnEdit = (Button) findViewById(R.id.btn_Edit_tree);
         btnEdit.setOnClickListener(new EditTreeLstr());
+
+        btnPics = (Button)findViewById(R.id.btn_pics);
+        btnPics.setOnClickListener(new ImagesListLstr());
+
         if (treeData != null) {
             tv_species.setText(treeData.getSpecies());
             tv_tree_street_address.setText(treeData.getStreetAddress());
@@ -83,6 +88,16 @@ public class TreeHistory extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        }
+    }
+
+    class ImagesListLstr implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.btn_pics){
+                Intent intent = new Intent(TreeHistory.this, TreeImagesList.class);
+                startActivity(intent);
+            }
         }
     }
 }

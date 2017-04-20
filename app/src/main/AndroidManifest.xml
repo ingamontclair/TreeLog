@@ -70,7 +70,8 @@
             android:name=".TreeHistory"
             android:label="@string/title_activity_tree_history"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TreeList"></activity>
+        <activity android:name=".TreeList" />
+        <activity android:name=".TreeImagesList"></activity>
     </application>
 
 </manifest>

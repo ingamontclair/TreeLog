@@ -50,13 +50,16 @@
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_weight="3"
+                android:background="@drawable/regular_button"
                 android:text="@string/map" />
 
             <Button
+                android:id="@+id/btn_pics"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_weight="3"
+                android:background="@drawable/regular_button"
                 android:text="@string/pics" />
         </LinearLayout>
         <ImageView
@@ -373,6 +376,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/regular_button"
                 android:text="@string/edit"
                 />
             <Button
@@ -381,6 +385,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#FF0000"
+                android:background="@drawable/regular_button"
                 android:text="@string/delete"
                 />
         </LinearLayout>

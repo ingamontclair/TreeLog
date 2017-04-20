@@ -157,4 +157,8 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="identify_a_tree_by_leaf">Identify a tree by leaf:</string>
+    <string name="upload_leaf_photo">Upload leaf photo</string>
+    <string name="do_you_want_to_proceed_with_this_identified_data">Do you want to proceed with this identified data?</string>
+    <string name="all_other_identified_data_will_be_displayed_on_the_next_forms">*all other identified data will be displayed on the next forms</string>
 </resources>

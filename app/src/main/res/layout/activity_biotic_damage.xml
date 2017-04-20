@@ -10,6 +10,7 @@
         android:id="@+id/list_biotic"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:listSelector="@drawable/list_selector"
         android:hint="@string/pick_biotic_damage_from_list">
     </ListView>
 </LinearLayout>

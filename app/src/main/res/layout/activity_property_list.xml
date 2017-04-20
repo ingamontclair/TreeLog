@@ -13,6 +13,7 @@
         android:id="@+id/list_property"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:listSelector="@drawable/list_selector"
         android:hint="@string/pick_property_type_from_list">
     </ListView>
 </LinearLayout>

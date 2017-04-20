@@ -16,7 +16,9 @@
             android:id="@+id/btnIntend"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/regular_button"
+            />
 
     </LinearLayout>
     <ImageView

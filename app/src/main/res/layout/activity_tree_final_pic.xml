@@ -35,13 +35,16 @@
                 android:text="Upload"
                 android:id="@+id/btn_upload_final_pic"
                 android:onClick="uploadFinalTreePic"
+                android:background="@drawable/regular_button"
                 />
             <Button
                 android:id="@+id/btn_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="Delete"
                 android:onClick="deleteFinalTreePic"
+                android:background="@drawable/regular_button"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -83,6 +86,7 @@
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/ll_icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -98,12 +102,15 @@
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:text="Pick tree Icon (optional)"
+            android:background="@drawable/regular_button"
             />
     </LinearLayout>
     <Button
         android:id="@+id/btn_commit"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/regular_button"
         android:text="Save tree to Database"
         />
 </LinearLayout>

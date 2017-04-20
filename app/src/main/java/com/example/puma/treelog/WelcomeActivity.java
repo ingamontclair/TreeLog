@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.puma.treelog.models.*;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -19,6 +20,10 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         btnLocateME = (Button)findViewById(R.id.btn_locateMe);
         btnLocateME.setOnClickListener(new LocateMELstr());
+        User user = com.example.puma.treelog.models.TreeSession.getInstance().getUser();
+        if (user != null){
+
+        }
     }
 
     @Override

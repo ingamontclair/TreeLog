@@ -18,10 +18,10 @@
 
     <Button
         android:id="@+id/btn_locate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#DCEDC8"
+        android:background="@drawable/regular_button"
         android:textColor="#212121"
         android:text="@string/locate" />
 
@@ -101,5 +101,6 @@
         android:id="@+id/btn_next_locate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/regular_button"
         android:text="@string/next" />
 </LinearLayout>

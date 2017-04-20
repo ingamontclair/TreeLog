@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -24,8 +23,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Arrays;
-
 public class Login extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 9001;
@@ -34,8 +31,6 @@ public class Login extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
     GoogleApiClient mGoogleApiClient;
-    FirebaseAuth.AuthStateListener mAuthStateListener;
-    final int RC_SIGN_IN2 = 112;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +38,6 @@ public class Login extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-
 
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(Login.this, WelcomeActivity.class));
@@ -130,37 +124,11 @@ public class Login extends AppCompatActivity {
         findViewById(R.id.google_signbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // signIn();
-                signIn2();
-
+                signIn();
             }
         });
         SignInButton signInButton = (SignInButton) findViewById(R.id.google_signbtn);
         signInButton.setSize(SignInButton.SIZE_WIDE);
-    }
-    private void signIn2(){
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() != null) {
-                    //username = firebaseAuth.getCurrentUser().getEmail();
-                    //Toast.makeText(Login.this, "You are already signed in", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, WelcomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    startActivityForResult(
-                            AuthUI.getInstance()
-                                    .createSignInIntentBuilder()
-                                    .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                            new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
-                                    ))
-                                    .build(),
-                            RC_SIGN_IN);
-                }
-            }
-        };
-        auth.addAuthStateListener(mAuthStateListener);
     }
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
