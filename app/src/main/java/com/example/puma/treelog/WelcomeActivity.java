@@ -57,6 +57,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_logout:
                 FirebaseAuth.getInstance().signOut();
+                finish();
                 intent = new Intent(WelcomeActivity.this, Login.class);
                 startActivity(intent);
                 return true;
