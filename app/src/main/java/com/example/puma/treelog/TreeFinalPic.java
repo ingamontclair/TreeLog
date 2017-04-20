@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,15 +21,23 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import com.example.puma.treelog.utils.FireBase;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class TreeFinalPic extends AppCompatActivity {
     private Button btnCommit;
     private TextView tvDateCreated;
     private int PICK_FINAL_IMAGE_REQUEST = 1;
     ImageView imgFinal,imgSmall;
-    DatabaseReference myref;
+    Uri uriFinalImage;
+    //DatabaseReference myref;
+    FirebaseStorage mFirebaseStorage;
+    StorageReference mStorageReference;
+    String finalPhotoURI;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +45,9 @@ public class TreeFinalPic extends AppCompatActivity {
 
         imgFinal=(ImageView)findViewById(R.id.final_tree_pic);
         imgSmall=(ImageView) findViewById(R.id.small_tree_pic);
+
+        mFirebaseStorage= FirebaseStorage.getInstance();
+        mStorageReference=mFirebaseStorage.getReference().child("images");
 
         TreeData treeData = TreeSession.getInstance().getTreeData();
         btnCommit = (Button)findViewById(R.id.btn_commit);
@@ -65,10 +77,25 @@ public class TreeFinalPic extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_FINAL_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-            Uri uri = data.getData();
+            uriFinalImage = data.getData();
+            StorageReference storageReference= mStorageReference
+                    .child(uriFinalImage.getLastPathSegment());
+
+            storageReference.putFile(uriFinalImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                   @Override
+                                                                   public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                                                       finalPhotoURI=taskSnapshot.getDownloadUrl().toString();
+
+
+
+
+                                                                   }
+                                                               }
+            );
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriFinalImage);
 
                 imgFinal.setImageBitmap(bitmap);
                 imgSmall.setImageBitmap(bitmap);
@@ -93,6 +120,7 @@ public class TreeFinalPic extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
                 String dateCreated = df.format(c.getTime());
                 treeData.setDateCreated(dateCreated);
+                treeData.setPhotoMainURL(finalPhotoURI.toString());
 //all TreeData is ready for commit - place for commit !!!
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference("Tree");
                 myref.push().setValue(treeData);

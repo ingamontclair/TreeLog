@@ -13,6 +13,10 @@ import android.widget.ImageView;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeSession;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
@@ -21,12 +25,20 @@ public class TreePit extends AppCompatActivity {
     private EditText editComments;
     ImageView imageView;
     private int PICK_IMAGE_REQUEST = 1;
+    FirebaseStorage mFirebaseStorage;
+    StorageReference mStorageReference;
+    Uri treePitURIImage;
+    String treePitURI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_pit);
         TreeData treeData = TreeSession.getInstance().getTreeData();
+
+        mFirebaseStorage= FirebaseStorage.getInstance();
+        mStorageReference=mFirebaseStorage.getReference().child("treePitImages");
+
         imageView = (ImageView) findViewById(R.id.img_pic);
         btnNext = (Button)findViewById(R.id.btn_pit_next);
         btnNext.setOnClickListener(new HealthNextLstr());
@@ -52,10 +64,25 @@ public class TreePit extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
-            Uri uri = data.getData();
+            treePitURIImage = data.getData();
+            StorageReference storageReference= mStorageReference
+                    .child(treePitURIImage.getLastPathSegment());
+
+            storageReference.putFile(treePitURIImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                             @Override
+                                                                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                                                                 treePitURI=taskSnapshot.getDownloadUrl().toString();
+
+
+
+
+                                                                             }
+                                                                         }
+            );
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), treePitURIImage);
 
                 imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
@@ -76,6 +103,7 @@ public class TreePit extends AppCompatActivity {
             if (view.getId() == R.id.btn_pit_next) {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 treeData.setTreePitComments(editComments.getText().toString());
+                treeData.setPhotoPitURL(treePitURI);
 //TODO: validate all fields and show alerts
                 Intent intent = new Intent(TreePit.this, TreeCondition.class);
                 startActivity(intent);
