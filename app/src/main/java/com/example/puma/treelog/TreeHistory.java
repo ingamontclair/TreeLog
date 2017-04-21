@@ -30,6 +30,7 @@ public class TreeHistory extends AppCompatActivity {
     private TextView tv_tree_pit_comments;
     private Button btnEdit;
     private Button btnPics;
+    private Button btnAddPics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +43,8 @@ public class TreeHistory extends AppCompatActivity {
         tv_property_type = (TextView)findViewById(R.id.tv_property_type);
         tv_date_created = (TextView)findViewById(R.id.tv_date_created);
         tv_vol_creator = (TextView)findViewById(R.id.tv_vol_creator_name);
-        tv_date_modified = (TextView)findViewById(R.id.tv_date_modyfied);
-        tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
+        //tv_date_modified = (TextView)findViewById(R.id.tv_date_modyfied);
+        //tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
         tv_tree_type = (TextView)findViewById(R.id.tv_tree_type);
         tv_tree_diametr = (TextView)findViewById(R.id.tv_tree_diametr);
         tv_tree_size = (TextView)findViewById(R.id.tv_tree_size);
@@ -57,6 +58,9 @@ public class TreeHistory extends AppCompatActivity {
 
         btnPics = (Button)findViewById(R.id.btn_pics);
         btnPics.setOnClickListener(new ImagesListLstr());
+
+        btnAddPics= (Button)findViewById(R.id.btn_add_pics);
+        btnAddPics.setOnClickListener(new AddPicsLstr());
 
         if (treeData != null) {
             tv_species.setText(treeData.getSpecies());
@@ -96,6 +100,16 @@ public class TreeHistory extends AppCompatActivity {
         public void onClick(View view) {
             if (view.getId() == R.id.btn_pics){
                 Intent intent = new Intent(TreeHistory.this, TreeImagesList.class);
+                startActivity(intent);
+            }
+        }
+    }
+
+    class AddPicsLstr implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.btn_add_pics){
+                Intent intent = new Intent(TreeHistory.this, AddPics.class);
                 startActivity(intent);
             }
         }

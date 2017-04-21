@@ -29,9 +29,6 @@ public class TreeList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_list);
-
-
-
         treeListView = (ListView)findViewById(R.id.lv_tree_list);
         adapter=new CustomizedListAdapter(this, treeList);
         treeListView.setAdapter(adapter);

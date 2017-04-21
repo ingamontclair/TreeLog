@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeSession;
@@ -120,10 +121,14 @@ public class TreeFinalPic extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
                 String dateCreated = df.format(c.getTime());
                 treeData.setDateCreated(dateCreated);
-                treeData.setPhotoMainURL(finalPhotoURI.toString());
+                treeData.setPhotoMainURL(finalPhotoURI);
 //all TreeData is ready for commit - place for commit !!!
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference("Tree");
                 myref.push().setValue(treeData);
+                Toast.makeText(TreeFinalPic.this, treeData.getSpecies() + " saved to DataBase", Toast.LENGTH_SHORT).show();
+                TreeSession.getInstance().setTreeData(new TreeData());
+                Intent intent = new Intent(TreeFinalPic.this, WelcomeActivity.class);
+                startActivity(intent);
 
             }
         }

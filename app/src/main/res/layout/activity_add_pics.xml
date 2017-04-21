@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.puma.treelog.AddPics"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_addPicsToDB"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/regular_button"
+        android:text="Save pics"
+        />
+<ListView
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:id="@+id/list_new_pics"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</ListView>
+
+</LinearLayout>
