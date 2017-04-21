@@ -83,8 +83,7 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
                 //Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_map:
-                startActivity(new Intent(WelcomeActivity.this, MapsActivity.class));
-                Toast.makeText(WelcomeActivity.this, "Map", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(WelcomeActivity.this, LoadingScreenActivity.class));
                 return true;
             case R.id.menu_logout:
                 FirebaseAuth.getInstance().signOut();
@@ -129,9 +128,8 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
                         if (mLastLocation != null) {
                             double lat = mLastLocation.getLatitude();
                             double lon = mLastLocation.getLongitude();
-                            startActivity(new Intent(WelcomeActivity.this, MapsActivity.class)
+                            startActivity(new Intent(WelcomeActivity.this, LoadingScreenActivity.class)
                                     .putExtra("latitude", lat).putExtra("longitude", lon));
-                            Toast.makeText(WelcomeActivity.this, "Locate Me", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(WelcomeActivity.this, "No connection", Toast.LENGTH_SHORT).show();
                         }
@@ -156,9 +154,8 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
                         if (mLastLocation != null) {
                             double lat = mLastLocation.getLatitude();
                             double lon = mLastLocation.getLongitude();
-                            startActivity(new Intent(WelcomeActivity.this, MapsActivity.class)
+                            startActivity(new Intent(WelcomeActivity.this, LoadingScreenActivity.class)
                                     .putExtra("latitude", lat).putExtra("longitude", lon));
-                            Toast.makeText(WelcomeActivity.this, "Locate Me", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(WelcomeActivity.this, "No connection", Toast.LENGTH_SHORT).show();
                         }

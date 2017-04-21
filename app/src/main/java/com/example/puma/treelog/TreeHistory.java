@@ -31,6 +31,7 @@ public class TreeHistory extends AppCompatActivity {
     private Button btnEdit;
     private Button btnPics;
     private Button btnAddPics;
+    private Button btnMaps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +44,8 @@ public class TreeHistory extends AppCompatActivity {
         tv_property_type = (TextView)findViewById(R.id.tv_property_type);
         tv_date_created = (TextView)findViewById(R.id.tv_date_created);
         tv_vol_creator = (TextView)findViewById(R.id.tv_vol_creator_name);
-        //tv_date_modified = (TextView)findViewById(R.id.tv_date_modyfied);
-        //tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
+//        tv_date_modified = (TextView)findViewById(R.id.tv_date_modyfied);
+//        tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
         tv_tree_type = (TextView)findViewById(R.id.tv_tree_type);
         tv_tree_diametr = (TextView)findViewById(R.id.tv_tree_diametr);
         tv_tree_size = (TextView)findViewById(R.id.tv_tree_size);
@@ -55,6 +56,9 @@ public class TreeHistory extends AppCompatActivity {
         tv_tree_pit_comments = (TextView)findViewById(R.id.tv_tree_pit);
         btnEdit = (Button) findViewById(R.id.btn_Edit_tree);
         btnEdit.setOnClickListener(new EditTreeLstr());
+
+        btnMaps = (Button) findViewById(R.id.btn_map);
+        btnMaps.setOnClickListener(new MapBtnLstr());
 
         btnPics = (Button)findViewById(R.id.btn_pics);
         btnPics.setOnClickListener(new ImagesListLstr());
@@ -111,6 +115,16 @@ public class TreeHistory extends AppCompatActivity {
             if (view.getId() == R.id.btn_add_pics){
                 Intent intent = new Intent(TreeHistory.this, AddPics.class);
                 startActivity(intent);
+            }
+        }
+    }
+
+    class MapBtnLstr implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.btn_map) {
+                startActivity(new Intent(TreeHistory.this, LoadingScreenActivity.class)
+                        .putExtra("address", tv_tree_street_address.getText().toString()));
             }
         }
     }

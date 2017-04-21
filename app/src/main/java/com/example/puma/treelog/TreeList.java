@@ -19,7 +19,7 @@ public class TreeList extends AppCompatActivity {
     CustomizedListAdapter adapter;
     ArrayList<TreeData> treeList = new ArrayList<TreeData>(){
         {
-            add(new TreeData("300 gorge","private","Evergreen","Pine123"));
+            add(new TreeData("1600 Pennsylvania Avenue","private","Evergreen","Pine123"));
             add(new TreeData("Edgewater rd","city","Fruit tree","Apple567"));
             add(new TreeData("7119 Shore rd. Brooklyn","private","Deciduous Tree","Willow789"));
             add(new TreeData("388 Greenwich st. New York","city","Fruit tree","Peach123"));

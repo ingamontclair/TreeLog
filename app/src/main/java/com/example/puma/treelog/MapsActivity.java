@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     double lat;
     double lon;
+    String treeAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         lat = intent.getDoubleExtra("latitude",0);
         lon = intent.getDoubleExtra("longitude", 0);
+        treeAddress = intent.getStringExtra("address");
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -53,8 +57,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locations.add("704 Chelton Ave, NJ");
         locations.add("1573 S 8th St, NJ");
 
+        // If the user chooses the map from Tree History
+        if (treeAddress!=null){
+            locations.add(treeAddress);
+            try {
+                List<Address> nameCord = geocoder.getFromLocationName(locations.get(locations.size()-1),1);
+                if (nameCord != null && nameCord.size() > 0) {
+                    double lat = nameCord.get(0).getLatitude();
+                    double lng = nameCord.get(0).getLongitude();
+                    LatLng vita = new LatLng(lat, lng);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vita,17));
+                    mMap.addMarker(new MarkerOptions().position(vita).title(locations.get(locations.size()-1)));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         // If the user chooses 'Locate Me'
-        if (lat != 0 && lon != 0) {
+        else if (lat != 0 && lon != 0) {
             LatLng myLocale = new LatLng(lat, lon);
             mMap.addMarker(new MarkerOptions().position(myLocale).title("You are here"));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocale,17));

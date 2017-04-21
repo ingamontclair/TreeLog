@@ -1,0 +1,42 @@
+package com.example.puma.treelog;
+
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+
+public class LoadingScreenActivity extends AppCompatActivity {
+    private final int DELAY = 3000;
+    private ProgressBar progressBar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loading_screen);
+        Intent intent = getIntent();
+        final String address = intent.getStringExtra("address");
+        final double lat = intent.getDoubleExtra("latitude",0);
+        final double lon = intent.getDoubleExtra("longitude", 0);
+        progressBar = (ProgressBar) findViewById(R.id.spinner);
+        progressBar.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent mainIntent = new Intent(LoadingScreenActivity.this,MapsActivity.class);
+                mainIntent.putExtra("address", address);
+                mainIntent.putExtra("latitude", lat);
+                mainIntent.putExtra("longitude", lon);
+                LoadingScreenActivity.this.startActivity(mainIntent);
+                LoadingScreenActivity.this.finish();
+            }
+        }, DELAY);
+    }
+}
