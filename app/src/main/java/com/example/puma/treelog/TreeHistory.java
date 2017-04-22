@@ -1,14 +1,26 @@
 package com.example.puma.treelog;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeImageData;
 import com.example.puma.treelog.models.TreeSession;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class TreeHistory extends AppCompatActivity {
     private TextView tv_species;
@@ -32,6 +44,10 @@ public class TreeHistory extends AppCompatActivity {
     private Button btnPics;
     private Button btnAddPics;
     private Button btnMaps;
+
+    public final static int PICK_PHOTO_CODE = 1046;
+    Button buttonLoadImage;
+    ArrayList mArrayUri, mBitmapsSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,10 +129,58 @@ public class TreeHistory extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_add_pics){
-                Intent intent = new Intent(TreeHistory.this, AddPics.class);
-                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (data.getClipData() != null) {
+            ClipData mClipData = data.getClipData();
+            mArrayUri = new ArrayList<Uri>();
+            mBitmapsSelected = new ArrayList<Bitmap>();
+            for (int i = 0; i < mClipData.getItemCount(); i++) {
+                ClipData.Item item = mClipData.getItemAt(i);
+                Uri uri = item.getUri();
+                mArrayUri.add(uri);
+
+
+                // !! You may need to resize the image if it's too large
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                mBitmapsSelected.add(bitmap);
+            }
+
+
+
+            Log.d("Images count",""+mArrayUri.size()+"Bit map Images :"+mBitmapsSelected.size());
+
+        }
+
+        //TreeImageData treeImageData=TreeSession.getInstance().getTreeImageData();
+
+        TreeSession treeSession=TreeSession.getInstance();
+        TreeImageData treeImageData=new TreeImageData();
+
+        treeImageData.setTreeImages(mBitmapsSelected);
+        treeImageData.setTreeImmageUri(mArrayUri);
+
+        treeSession.setTreeImageData(treeImageData);
+        Intent intent=new Intent(TreeHistory.this,AddPics.class);
+        //intent.putStringArrayListExtra("URIList",mArrayUri);
+        //intent.putStringArrayListExtra("selectedImages",mBitmapsSelected);
+        startActivity(intent);
     }
 
     class MapBtnLstr implements View.OnClickListener {

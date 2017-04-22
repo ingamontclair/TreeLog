@@ -1,6 +1,8 @@
 package com.example.puma.treelog;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.puma.treelog.models.TreeImageData;
 import com.example.puma.treelog.models.TreeImages;
+import com.example.puma.treelog.models.TreeSession;
 import com.example.puma.treelog.utils.CustomizedImagesListAdapter;
 import com.example.puma.treelog.utils.CustomizedNewPicsAdapter;
 
@@ -18,23 +22,27 @@ import java.util.ArrayList;
 public class AddPics extends AppCompatActivity {
     ListView treeNewImagesList;
     CustomizedNewPicsAdapter adapter;
-    ArrayList<TreeImages> treeImages = new ArrayList<TreeImages>(){
-        {
-            add(new TreeImages("pit image"));
-            add(new TreeImages("trunk image"));
-            add(new TreeImages("blooming tree image"));
-            add(new TreeImages("green tree image"));
-            add(new TreeImages("pit image"));
-            add(new TreeImages("trunk image"));
-            add(new TreeImages("blooming tree image"));
-            add(new TreeImages("green tree image"));
-        }
-    };
+   ArrayList<TreeImages> treeImages  = new ArrayList<TreeImages>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pics);
         treeNewImagesList = (ListView)findViewById(R.id.list_new_pics);
+//Get TreeImage Data from Session and add it to List View
+        TreeImageData treeImageData=TreeSession.getInstance().getTreeImageData();
+        ArrayList<Bitmap> treeBitmapImages=treeImageData.getTreeImages();
+        ArrayList<Uri> treeImageUri=treeImageData.getTreeImmageUri();
+
+        for(int i=0;i<treeBitmapImages.size();i++){
+            TreeImages treeImageObj=new TreeImages("");
+            treeImageObj.setTreeBitmapImage(treeBitmapImages.get(i));
+            treeImageObj.setTreeImageURL(treeImageUri.get(i).toString());
+
+            treeImages.add(treeImageObj);
+        }
+
+
         adapter = new CustomizedNewPicsAdapter(this, treeImages);
         treeNewImagesList.setAdapter(adapter);
 /*        treeNewImagesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
