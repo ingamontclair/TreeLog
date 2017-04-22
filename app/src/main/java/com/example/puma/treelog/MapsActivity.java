@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.utils.Constants;
+import com.example.puma.treelog.utils.FireBase;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -14,6 +17,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,19 +30,22 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ArrayList<String> locations = new ArrayList<>();
+    private ArrayList<TreeData> locations;
 
     double lat;
     double lon;
     String treeAddress;
+
+    ChildEventListener mChildEventListener;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         Intent intent = getIntent();
-        lat =Double.valueOf(intent.getStringExtra("latitude"));
-        lon = Double.valueOf(intent.getStringExtra("longitude"));
+        lat =intent.getStringExtra("latitude")!=null?Double.valueOf(intent.getStringExtra("latitude")):0;
+        lon = intent.getStringExtra("longitude")!=null?Double.valueOf(intent.getStringExtra("longitude")):0;
         treeAddress = intent.getStringExtra("address")!=null ?intent.getStringExtra("address").replace("\n"," "):null;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -48,27 +59,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         Geocoder geocoder = new Geocoder(this);
 
-        // Populate list with examples
-       /* locations.add("Clifton, NJ");
-        locations.add("186 Ackerman Avenue, Clifton, NJ");
-        locations.add("76 Center Street, Clifton, NJ");
-        locations.add("27 Cutler Street, Clifton, NJ");
-        locations.add("Cooper Plaza Commons, Camden, NJ");
-        locations.add("704 Chelton Ave, NJ");
-        locations.add("1573 S 8th St, NJ");*/
-
         // If the user chooses the map from Tree History
         if (treeAddress!=null){
-            locations.add(treeAddress);
             try {
-                //List<Address> nameCord = geocoder.getFromLocationName(locations.get(locations.size()-1),1);
-                //if (nameCord != null && nameCord.size() > 0) {
-                    //double lat = nameCord.get(0).getLatitude();
-                   // double lng = nameCord.get(0).getLongitude();
                     LatLng vita = new LatLng(lat, lon);
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vita,17));
-                    mMap.addMarker(new MarkerOptions().position(vita).title(locations.get(locations.size()-1)));
-                //}
+                    mMap.addMarker(new MarkerOptions().position(vita).title(treeAddress));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -95,20 +91,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
         }
-        // Populates the map with markers
-        int ct;
-        for (ct = 0; ct < locations.size(); ct++) {
-            try {
-                //List<Address> nameCord = geocoder.getFromLocationName(locations.get(ct),1);
-                //if (nameCord != null && nameCord.size() > 0) {
-                   // double lat = nameCord.get(0).getLatitude();
-                    //double lng = nameCord.get(0).getLongitude();
-                    LatLng vita = new LatLng(lat, lon);
-                    mMap.addMarker(new MarkerOptions().position(vita).title(locations.get(ct)));
-               // }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+        // add markers for database items
+        myRef= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                TreeData treeItem = dataSnapshot.getValue(TreeData.class);
+                if (!treeItem.getLatitude().equals("") && !treeItem.getLongitude().equals("")){
+                    double addLat = Double.valueOf(treeItem.getLatitude());
+                    double addLon = Double.valueOf(treeItem.getLongitude());
+                    LatLng addCord = new LatLng(addLat, addLon);
+                    mMap.addMarker(new MarkerOptions().position(addCord).title(treeItem.getStreetAddress()));
+                }
             }
-        }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        myRef.addChildEventListener(mChildEventListener);
     }
 }

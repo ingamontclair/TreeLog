@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class LoadingScreenActivity extends AppCompatActivity {
     private final int DELAY = 3000;
@@ -19,6 +20,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
         final String address = intent.getStringExtra("address");
         final String lat = intent.getStringExtra("latitude");
         final String lon = intent.getStringExtra("longitude");
+
         progressBar = (ProgressBar) findViewById(R.id.spinner);
         progressBar.setVisibility(View.VISIBLE);
 

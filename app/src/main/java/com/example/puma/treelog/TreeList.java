@@ -25,14 +25,8 @@ public class TreeList extends AppCompatActivity {
     CustomizedListAdapter adapter;
     ChildEventListener mChildEventListener;
     DatabaseReference myRef;
-    ArrayList<TreeData> treeList = new ArrayList<TreeData>(){
-        {
-            add(new TreeData("1600 Pennsylvania Avenue","private","Evergreen","Pine123"));
-            add(new TreeData("Edgewater rd","city","Fruit tree","Apple567"));
-            add(new TreeData("7119 Shore rd. Brooklyn","private","Deciduous Tree","Willow789"));
-            add(new TreeData("19 Highland Ave, Montville, NJ 07045","city","Fruit tree","Peach123"));
-        }
-    };
+    ArrayList<TreeData> treeList = new ArrayList<TreeData>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
