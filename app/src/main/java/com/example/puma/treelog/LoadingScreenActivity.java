@@ -17,8 +17,8 @@ public class LoadingScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loading_screen);
         Intent intent = getIntent();
         final String address = intent.getStringExtra("address");
-        final double lat = intent.getDoubleExtra("latitude",0);
-        final double lon = intent.getDoubleExtra("longitude", 0);
+        final String lat = intent.getStringExtra("latitude");
+        final String lon = intent.getStringExtra("longitude");
         progressBar = (ProgressBar) findViewById(R.id.spinner);
         progressBar.setVisibility(View.VISIBLE);
 

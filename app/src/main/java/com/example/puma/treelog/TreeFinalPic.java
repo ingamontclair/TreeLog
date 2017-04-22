@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FireBase;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -123,7 +124,8 @@ public class TreeFinalPic extends AppCompatActivity {
                 treeData.setDateCreated(dateCreated);
                 treeData.setPhotoMainURL(finalPhotoURI);
 //all TreeData is ready for commit - place for commit !!!
-                DatabaseReference myref= FireBase.getInstance().getFireBaseReference("Tree");
+
+                DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
                 myref.push().setValue(treeData);
                 Toast.makeText(TreeFinalPic.this, treeData.getSpecies() + " saved to DataBase", Toast.LENGTH_SHORT).show();
                 TreeSession.getInstance().setTreeData(new TreeData());

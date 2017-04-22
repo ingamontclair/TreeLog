@@ -129,7 +129,7 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
                             double lat = mLastLocation.getLatitude();
                             double lon = mLastLocation.getLongitude();
                             startActivity(new Intent(WelcomeActivity.this, LoadingScreenActivity.class)
-                                    .putExtra("latitude", lat).putExtra("longitude", lon));
+                                    .putExtra("latitude", String.valueOf(lat)).putExtra("longitude",  String.valueOf(lon)));
                         } else {
                             Toast.makeText(WelcomeActivity.this, "No connection", Toast.LENGTH_SHORT).show();
                         }

@@ -33,9 +33,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         Intent intent = getIntent();
-        lat = intent.getDoubleExtra("latitude",0);
-        lon = intent.getDoubleExtra("longitude", 0);
-        treeAddress = intent.getStringExtra("address");
+        lat =Double.valueOf(intent.getStringExtra("latitude"));
+        lon = Double.valueOf(intent.getStringExtra("longitude"));
+        treeAddress = intent.getStringExtra("address")!=null ?intent.getStringExtra("address").replace("\n"," "):null;
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -49,27 +49,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Geocoder geocoder = new Geocoder(this);
 
         // Populate list with examples
-        locations.add("Clifton, NJ");
+       /* locations.add("Clifton, NJ");
         locations.add("186 Ackerman Avenue, Clifton, NJ");
         locations.add("76 Center Street, Clifton, NJ");
         locations.add("27 Cutler Street, Clifton, NJ");
         locations.add("Cooper Plaza Commons, Camden, NJ");
         locations.add("704 Chelton Ave, NJ");
-        locations.add("1573 S 8th St, NJ");
+        locations.add("1573 S 8th St, NJ");*/
 
         // If the user chooses the map from Tree History
         if (treeAddress!=null){
             locations.add(treeAddress);
             try {
-                List<Address> nameCord = geocoder.getFromLocationName(locations.get(locations.size()-1),1);
-                if (nameCord != null && nameCord.size() > 0) {
-                    double lat = nameCord.get(0).getLatitude();
-                    double lng = nameCord.get(0).getLongitude();
-                    LatLng vita = new LatLng(lat, lng);
+                //List<Address> nameCord = geocoder.getFromLocationName(locations.get(locations.size()-1),1);
+                //if (nameCord != null && nameCord.size() > 0) {
+                    //double lat = nameCord.get(0).getLatitude();
+                   // double lng = nameCord.get(0).getLongitude();
+                    LatLng vita = new LatLng(lat, lon);
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vita,17));
                     mMap.addMarker(new MarkerOptions().position(vita).title(locations.get(locations.size()-1)));
-                }
-            } catch (IOException e) {
+                //}
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -99,14 +99,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         int ct;
         for (ct = 0; ct < locations.size(); ct++) {
             try {
-                List<Address> nameCord = geocoder.getFromLocationName(locations.get(ct),1);
-                if (nameCord != null && nameCord.size() > 0) {
-                    double lat = nameCord.get(0).getLatitude();
-                    double lng = nameCord.get(0).getLongitude();
-                    LatLng vita = new LatLng(lat, lng);
+                //List<Address> nameCord = geocoder.getFromLocationName(locations.get(ct),1);
+                //if (nameCord != null && nameCord.size() > 0) {
+                   // double lat = nameCord.get(0).getLatitude();
+                    //double lng = nameCord.get(0).getLongitude();
+                    LatLng vita = new LatLng(lat, lon);
                     mMap.addMarker(new MarkerOptions().position(vita).title(locations.get(ct)));
-                }
-            } catch (IOException e) {
+               // }
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

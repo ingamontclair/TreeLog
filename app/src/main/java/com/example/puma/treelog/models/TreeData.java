@@ -47,6 +47,7 @@ public class TreeData implements Serializable {
         this.propertyType = propertyType;
         this.treeType = treeType;
         this.treeName = treeName;
+        this.species="test Specie";
     }
 
     public String getTreeName() {

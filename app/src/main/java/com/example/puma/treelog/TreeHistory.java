@@ -32,11 +32,12 @@ public class TreeHistory extends AppCompatActivity {
     private Button btnPics;
     private Button btnAddPics;
     private Button btnMaps;
+    private  TreeData treeData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_history);
-        TreeData treeData = TreeSession.getInstance().getTreeData();
+        treeData = TreeSession.getInstance().getTreeData();
         tv_species = (TextView)findViewById(R.id.tv_tree_species);
         tv_tree_street_address = (TextView)findViewById(R.id.tv_tree_address);
         tv_tree_name = (TextView)findViewById(R.id.tv_tree_name);
@@ -124,7 +125,10 @@ public class TreeHistory extends AppCompatActivity {
         public void onClick(View v) {
             if (v.getId() == R.id.btn_map) {
                 startActivity(new Intent(TreeHistory.this, LoadingScreenActivity.class)
-                        .putExtra("address", tv_tree_street_address.getText().toString()));
+                        .putExtra("address", tv_tree_street_address.getText().toString())
+                        .putExtra("longitude",treeData.getLongitude())
+                        .putExtra("latitude",treeData.getLatitude()));
+
             }
         }
     }
