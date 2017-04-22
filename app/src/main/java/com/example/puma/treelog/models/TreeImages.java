@@ -1,5 +1,7 @@
 package com.example.puma.treelog.models;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,8 @@ public class TreeImages implements Serializable{
     private String treeImageURL; //image URL
     private String treeDescription; //tree Image description i. e. leaf, trunk, blooming etc
     private String treeImageUploadDate; //tree image modified date
+    private Bitmap treeBitmapImage;// tree bitmap Image
+
     private TreeHistoryData treeHistoryData;
 
     public TreeHistoryData getTreeHistoryData() {
@@ -29,6 +33,7 @@ public class TreeImages implements Serializable{
         this.treeDescription = treeDescription;
 
     }
+
     public String getTreeImageID() {
         return treeImageID;
     }
@@ -67,5 +72,13 @@ public class TreeImages implements Serializable{
 
     public void setTreeImageUploadDate(String treeImageUploadDate) {
         this.treeImageUploadDate = treeImageUploadDate;
+    }
+
+    public Bitmap getTreeBitmapImage() {
+        return treeBitmapImage;
+    }
+
+    public void setTreeBitmapImage(Bitmap treeBitmapImage) {
+        this.treeBitmapImage = treeBitmapImage;
     }
 }

@@ -19,6 +19,8 @@ public class TreeSession {
 
     private TreeData treeData;
     private User user;
+    private TreeImageData treeImageData;
+
 
     public TreeData getTreeData() {
         return treeData;
@@ -36,5 +38,14 @@ public class TreeSession {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public TreeImageData getTreeImageData() {
+        return treeImageData;
+    }
+
+    public void setTreeImageData(TreeImageData treeImageData) {
+        this.treeImageData = treeImageData;
+    }
 }
+
 

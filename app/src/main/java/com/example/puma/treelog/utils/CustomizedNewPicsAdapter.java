@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.puma.treelog.R;
@@ -48,13 +49,15 @@ public class CustomizedNewPicsAdapter extends BaseAdapter {
         if(convertView==null)
             view = inflater.inflate(R.layout.add_pic_row, null);
         EditText editDescription = (EditText)view.findViewById(R.id.edit_imageDescription);
-        //ImageView thumb_image=(ImageView)view.findViewById(R.id.list_image); // thumb image
+        ImageView thumb_image=(ImageView)view.findViewById(R.id.list_image); // thumb image
 
         TreeImages treeImages = data.get(position);
 
         // Setting all values in listview
         //tree_name.setText("tree Name");
         editDescription.setText(treeImages.getTreeDescription());
+        thumb_image.setImageBitmap(treeImages.getTreeBitmapImage());
+
 
         //imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
         return view;
