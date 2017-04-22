@@ -19,10 +19,18 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.puma.treelog.models.*;
+import com.example.puma.treelog.utils.Constants;
+import com.example.puma.treelog.utils.FireBase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
@@ -39,12 +47,46 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
      */
     protected Location mLastLocation;
 
+    ChildEventListener mChildEventListener;
+    DatabaseReference myRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         btnLocateME = (Button)findViewById(R.id.btn_locateMe);
         btnLocateME.setOnClickListener(new LocateMELstr());
+
+        myRef= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
+        mChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                TreeData treeItem = dataSnapshot.getValue(TreeData.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        myRef.addChildEventListener(mChildEventListener);
+
         User user = com.example.puma.treelog.models.TreeSession.getInstance().getUser();
         if (user != null){
 
