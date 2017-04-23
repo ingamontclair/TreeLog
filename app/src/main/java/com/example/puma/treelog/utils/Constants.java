@@ -17,4 +17,5 @@ public final class Constants {
     public static final String LOCATION_DATA_EXTRA = PACKAGE_NAME + ".LOCATION_DATA_EXTRA";
 
     public static final String FIRBASE_TREE_DATA="Tree";
+    public static final String FIRBASE_TREE_HISTORY_DATA="Tree History";
 }

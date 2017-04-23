@@ -22,8 +22,22 @@ public class TreeHistoryData implements Serializable{
     private String treeHistoryPitURL; //URL of tree pit changed
     private String treeHistoryPitComments; //new comments for tree pit condition
     private String treeHistoryHazard; //new tree hazard info
-    private TreeData treeData;
+   // private TreeData treeData;
     private List<TreeImages> treeImages;
+
+    public TreeHistoryData(String treeID, String userID, String entryDate, String treeTrunkPicURL, String treeHistoryDiametr, String treeHistorySize, String treeHistoryBiotic, String treeHistory_a_Biotic, String treeHistoryPitURL, String treeHistoryPitComments, String treeHistoryHazard) {
+        this.treeID = treeID;
+        this.userID = userID;
+        this.entryDate = entryDate;
+        this.treeTrunkPicURL = treeTrunkPicURL;
+        this.treeHistoryDiametr = treeHistoryDiametr;
+        this.treeHistorySize = treeHistorySize;
+        this.treeHistoryBiotic = treeHistoryBiotic;
+        this.treeHistory_a_Biotic = treeHistory_a_Biotic;
+        this.treeHistoryPitURL = treeHistoryPitURL;
+        this.treeHistoryPitComments = treeHistoryPitComments;
+        this.treeHistoryHazard = treeHistoryHazard;
+    }
 
     public List<TreeImages> getTreeImages() {
         return treeImages;
@@ -33,13 +47,13 @@ public class TreeHistoryData implements Serializable{
         this.treeImages = treeImages;
     }
 
-    public TreeData getTreeData() {
-        return treeData;
-    }
+    //public TreeData getTreeData() {
+      //  return treeData;
+    //}
 
-    public void setTreeData(TreeData treeData) {
-        this.treeData = treeData;
-    }
+    //public void setTreeData(TreeData treeData) {
+        //this.treeData = treeData;
+   // }
 
     public String getTreeHistoryID() {
         return treeHistoryID;

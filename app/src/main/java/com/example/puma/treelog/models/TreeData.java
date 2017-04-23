@@ -11,6 +11,7 @@ import java.util.List;
 
 // TreeData bean class
 public class TreeData implements Serializable {
+    private String treeId;
     private String latitude;
     private String longitude;
     private String streetAddress;
@@ -47,9 +48,14 @@ public class TreeData implements Serializable {
         this.propertyType = propertyType;
         this.treeType = treeType;
         this.treeName = treeName;
-        this.species="test Specie";
+    }
+    public String getTreeId() {
+        return treeId;
     }
 
+    public void setTreeId(String treeId) {
+        this.treeId = treeId;
+    }
     public String getTreeName() {
         return treeName;
     }

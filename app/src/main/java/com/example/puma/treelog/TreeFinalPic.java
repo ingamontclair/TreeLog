@@ -14,15 +14,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeHistoryData;
 import com.example.puma.treelog.models.TreeSession;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FireBase;
+import com.example.puma.treelog.utils.Utilities;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -126,7 +132,18 @@ public class TreeFinalPic extends AppCompatActivity {
 //all TreeData is ready for commit - place for commit !!!
 
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
-                myref.push().setValue(treeData);
+                if(treeData.getTreeId()==null)
+                    myref.push().setValue(treeData);
+                else {
+
+                    HashMap<String, Object> result = new HashMap<>();
+                    result.put(treeData.getTreeId(), treeData);
+                    myref.updateChildren(result);
+                    DatabaseReference myref_history= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_HISTORY_DATA);
+                    TreeHistoryData history=new TreeHistoryData(treeData.getTreeId(),null, Utilities.getCurrentTime(),null,treeData.getTreeDiametr(),treeData.getTreeSize(),treeData.getBioticDamage(),treeData.getA_bioticDamage(),treeData.getPhotoPitURL(),treeData.getTreePitComments(),treeData.getTreeHazard());
+                    myref_history.push().setValue(history);
+                }
+                   // myref.push().setValue(treeData);
                 Toast.makeText(TreeFinalPic.this, treeData.getSpecies() + " saved to DataBase", Toast.LENGTH_SHORT).show();
                 TreeSession.getInstance().setTreeData(new TreeData());
                 Intent intent = new Intent(TreeFinalPic.this, WelcomeActivity.class);

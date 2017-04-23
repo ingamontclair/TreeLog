@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeImageData;
@@ -101,6 +102,7 @@ public class TreeHistory extends AppCompatActivity {
             tv_a_biotic.setText(treeData.getA_bioticDamage());
             tv_hazard.setText(treeData.getTreeHazard());
             tv_tree_pit_comments.setText(treeData.getTreePitComments());
+            Toast.makeText(getApplicationContext(), "Tree ID: "+treeData.getTreeId(), Toast.LENGTH_SHORT).show();
         }
     }
 

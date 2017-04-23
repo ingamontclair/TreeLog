@@ -98,7 +98,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 TreeData treeItem = dataSnapshot.getValue(TreeData.class);
-                if (!treeItem.getLatitude().equals("") && !treeItem.getLongitude().equals("")){
+
+                if (treeItem!=null&& treeItem.getLatitude()!=null && treeItem.getLongitude()!=null && !treeItem.getLatitude().equals("") && !treeItem.getLongitude().equals("")){
                     double addLat = Double.valueOf(treeItem.getLatitude());
                     double addLon = Double.valueOf(treeItem.getLongitude());
                     LatLng addCord = new LatLng(addLat, addLon);
