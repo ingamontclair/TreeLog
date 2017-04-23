@@ -102,7 +102,7 @@ public class EditTree extends AppCompatActivity {
             if (view.getId() == R.id.btn_updateTree) {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
-                DatabaseReference treeRef = myref.child(treeData.getTreeDataID());
+                DatabaseReference treeRef = myref.child(treeData.getTreeId());
                 treeRef.setValue(treeData);
                 Intent intent = new Intent(EditTree.this, TreeHistory.class);
                 startActivity(intent);
