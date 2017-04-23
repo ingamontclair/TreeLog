@@ -50,7 +50,7 @@ public class TreeList extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 TreeData treeItem = dataSnapshot.getValue(TreeData.class);
-                treeItem.setTreeId(dataSnapshot.getKey());
+                treeItem.setTreeDataID(dataSnapshot.getKey());
                 treeList.add(treeItem);
             }
 

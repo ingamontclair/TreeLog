@@ -19,6 +19,10 @@ public class TreeTypeList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_type_list);
+
+        Intent intent = getIntent();
+        final Bundle bundle = intent.getExtras();
+
         treeTypes=getResources().getStringArray(R.array.tree_type);
         listView=(ListView)findViewById(R.id.list_treetype);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,treeTypes);
@@ -27,7 +31,8 @@ public class TreeTypeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
                 view.setBackgroundColor(Color.LTGRAY);
-                Intent exIntent=new Intent(TreeTypeList.this, TreeMeasurement.class);
+                Class tmpClass = (Class) bundle.get("className");
+                Intent exIntent=new Intent(TreeTypeList.this, tmpClass);
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 treeData.setTreeType(treeTypes[pstn]);
                 startActivity(exIntent);

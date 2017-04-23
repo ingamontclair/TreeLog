@@ -19,7 +19,8 @@ public class PropertyList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_list);
-
+        Intent intent = getIntent();
+        final Bundle bundle = intent.getExtras();
         propertyTypes=getResources().getStringArray(R.array.property_type);
         listView=(ListView)findViewById(R.id.list_property);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,propertyTypes);
@@ -29,7 +30,8 @@ public class PropertyList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 view.setBackgroundColor(Color.LTGRAY);
-                Intent exIntent=new Intent(PropertyList.this, LocateNewTree.class);
+                Class tmpClass = (Class) bundle.get("className");
+                Intent exIntent=new Intent(PropertyList.this, tmpClass);
                 treeData.setPropertyType(propertyTypes[pstn]);
                 startActivity(exIntent);
             }

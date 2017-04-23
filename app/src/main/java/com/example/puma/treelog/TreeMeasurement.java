@@ -68,6 +68,7 @@ public class TreeMeasurement extends AppCompatActivity {
             treeData.setTreeDiametr(editTreeDiametr.getText().toString());
             treeData.setTreeSize(editTreeSize.getText().toString());
             Intent exIntent = new Intent(TreeMeasurement.this, TreeTypeList.class);
+            exIntent.putExtra("className", TreeMeasurement.class);
             startActivity(exIntent);
         }
     }

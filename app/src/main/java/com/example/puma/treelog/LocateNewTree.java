@@ -272,6 +272,7 @@ public class LocateNewTree extends AppCompatActivity
             treeData.setStreetAddress(mAddressText.getText().toString());
             treeData.setPropertyType(editPropertyType.getText().toString());
             Intent intent = new Intent(LocateNewTree.this, PropertyList.class);
+            intent.putExtra("className", LocateNewTree.class);
             startActivity(intent);
         }
     }
