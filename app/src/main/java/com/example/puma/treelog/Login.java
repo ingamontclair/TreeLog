@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.puma.treelog.models.User;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -45,6 +46,9 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
+            User user=new User();
+            user.setUserName(auth.getCurrentUser().getDisplayName());
+            com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
             startActivity(new Intent(Login.this, WelcomeActivity.class));
             finish();
         }
@@ -72,7 +76,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
+                final String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -92,6 +96,7 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                final String userName=email;
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
@@ -104,6 +109,9 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    User user=new User();
+                                    user.setUserName(userName);
+                                    com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
                                     Intent intent = new Intent(Login.this, WelcomeActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -143,6 +151,9 @@ public class Login extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() != null) {
                     //username = firebaseAuth.getCurrentUser().getEmail();
                     //Toast.makeText(Login.this, "You are already signed in", Toast.LENGTH_SHORT).show();
+                    User user=new User();
+                    user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
+                    com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
                     Intent intent = new Intent(Login.this, WelcomeActivity.class);
                     startActivity(intent);
                     finish();
@@ -178,10 +189,13 @@ public class Login extends AppCompatActivity {
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d("GOOGLE", "handleSignInResult:" + result.isSuccess());
+        //Log.d("GOOGLE", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
+            User user=new User();
+            user.setUserName(acct.getDisplayName());
+            com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             Toast.makeText(getApplicationContext(), acct.getId(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Login.this, WelcomeActivity.class);

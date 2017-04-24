@@ -12,9 +12,12 @@
     tools:context="com.example.puma.treelog.WelcomeActivity">
 
     <TextView
+        android:id="@+id/wc_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome_user"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
         />
 
 <LinearLayout

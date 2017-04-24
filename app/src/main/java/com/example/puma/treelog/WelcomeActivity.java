@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.puma.treelog.models.*;
@@ -89,7 +90,7 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
 
         User user = com.example.puma.treelog.models.TreeSession.getInstance().getUser();
         if (user != null){
-
+            ((TextView)findViewById(R.id.wc_msg)).setText("Welcome "+user.getUserName());
         }
         buildGoogleApiClient();
     }
