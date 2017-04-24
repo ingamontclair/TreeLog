@@ -25,6 +25,7 @@ import com.example.puma.treelog.models.TreeSession;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FireBase;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class TreeHistory extends AppCompatActivity {
     private Button btnAddPics;
     private Button btnMaps;
     private Button btnDeleteTree;
+    private ImageView img_main_pic;
 
     public final static int PICK_PHOTO_CODE = 1046;
     Button buttonLoadImage;
@@ -79,7 +81,10 @@ public class TreeHistory extends AppCompatActivity {
         tv_a_biotic = (TextView)findViewById(R.id.tv_a_biotic_damage);
         tv_hazard = (TextView)findViewById(R.id.tv_tree_hazard);
         tv_tree_pit_comments = (TextView)findViewById(R.id.tv_tree_pit);
+        img_main_pic=(ImageView)findViewById(R.id.iv_main_picture) ;
+
         btnEdit = (Button) findViewById(R.id.btn_Edit_tree);
+
         btnEdit.setOnClickListener(new EditTreeLstr());
 
         btnMaps = (Button) findViewById(R.id.btn_map);
@@ -102,7 +107,15 @@ public class TreeHistory extends AppCompatActivity {
             tv_date_planted.setText(treeData.getDatePlanted());
             tv_property_type.setText(treeData.getPropertyType());
             tv_date_created.setText(treeData.getDateCreated());
-            //tv_vol_creator.setText(treeData.);
+
+           // Log.d("Tree Photo URL ",treeData.getPhotoMainURL());
+            if(treeData.getPhotoMainURL()!=null){
+                Picasso.with(img_main_pic.getContext())
+                        .load(treeData.getPhotoMainURL())
+                        .resize(150,150)
+                        .centerCrop()
+                        .into(img_main_pic);
+            }//tv_vol_creator.setText(treeData.);
             //tv_date_modified.setText(treeData.getD);
             //tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
             tv_tree_type.setText(treeData.getTreeType());
