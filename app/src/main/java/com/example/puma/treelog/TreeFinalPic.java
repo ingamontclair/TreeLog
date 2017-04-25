@@ -130,7 +130,7 @@ public class TreeFinalPic extends AppCompatActivity {
 
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
                 myref.push().setValue(treeData);
-                String key = myref.getKey();
+                //String key = myref.getKey();
                 Toast.makeText(TreeFinalPic.this, treeData.getSpecies() + " saved to DataBase", Toast.LENGTH_SHORT).show();
                 TreeSession.getInstance().setTreeData(new TreeData());
                 Intent intent = new Intent(TreeFinalPic.this, WelcomeActivity.class);

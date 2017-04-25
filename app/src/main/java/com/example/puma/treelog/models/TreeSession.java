@@ -18,9 +18,17 @@ public class TreeSession {
     }
 
     private TreeData treeData;
+    private TreeHistoryData treeHistoryData;
     private User user;
     private TreeImageData treeImageData;
 
+    public TreeHistoryData getTreeHistoryData() {
+        return treeHistoryData;
+    }
+
+    public void setTreeHistoryData(TreeHistoryData treeHistoryData) {
+        this.treeHistoryData = treeHistoryData;
+    }
 
     public TreeData getTreeData() {
         return treeData;

@@ -347,11 +347,11 @@
                 />
             <Button
                 android:layout_weight="1"
-                android:id="@+id/btn_add_pics"
+                android:id="@+id/btn_add_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/regular_button"
-                android:text="Add pics"
+                android:text="Add Event"
                 />
         </LinearLayout>
         <LinearLayout

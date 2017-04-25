@@ -49,7 +49,8 @@ public class TreeHistory extends AppCompatActivity {
     private TextView tv_hazard;
     private TextView tv_tree_pit_comments;
     private Button btnEdit;
-    private Button btnPics;
+    //private Button btnPics;
+    private Button btnAddEvent;
     private Button btnAddPics;
     private Button btnMaps;
     private Button btnDeleteTree;
@@ -90,11 +91,13 @@ public class TreeHistory extends AppCompatActivity {
         btnMaps = (Button) findViewById(R.id.btn_map);
         btnMaps.setOnClickListener(new MapBtnLstr());
 
-        btnPics = (Button) findViewById(R.id.btn_pics);
-        btnPics.setOnClickListener(new ImagesListLstr());
+        //btnPics = (Button) findViewById(R.id.btn_pics);
+        //btnPics.setOnClickListener(new ImagesListLstr());
+        btnAddEvent = (Button)findViewById(R.id.btn_add_event);
+        btnAddEvent.setOnClickListener(new AddTreeEventLstr());
 
-        btnAddPics = (Button) findViewById(R.id.btn_add_pics);
-        btnAddPics.setOnClickListener(new AddPicsLstr());
+        //btnAddPics = (Button) findViewById(R.id.btn_add_pics);
+        //btnAddPics.setOnClickListener(new AddPicsLstr());
 
         btnDeleteTree = (Button) findViewById(R.id.btn_delete_tree);
         btnDeleteTree.setOnClickListener(new DeleteTreeLstr());
@@ -152,17 +155,17 @@ public class TreeHistory extends AppCompatActivity {
         }
     }
 
-    class AddPicsLstr implements View.OnClickListener {
+/*    class AddPicsLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_add_pics) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
+                intent.setType("image*//*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
             }
         }
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -276,6 +279,16 @@ public class TreeHistory extends AppCompatActivity {
                     break;
             }
             dismiss();
+        }
+    }
+
+    class AddTreeEventLstr implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.btn_add_event){
+                Intent intent = new Intent(TreeHistory.this, AddEvent.class);
+                startActivity(intent);
+            }
         }
     }
 }

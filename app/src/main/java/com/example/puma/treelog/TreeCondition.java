@@ -89,7 +89,6 @@ public class TreeCondition extends AppCompatActivity {
                     treeData.setRemove("No");
                 }
                 break;
-            // TODO: Veggie sandwich
         }
     }
 

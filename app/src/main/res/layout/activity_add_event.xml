@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.puma.treelog.AddEvent">
+<TextView
+    android:id="@+id/tv_event_treeName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="TreeName"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diametr:"
+        />
+    <EditText
+        android:id="@+id/edit_event_diametr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tree size:"
+        />
+    <EditText
+        android:id="@+id/edit_event_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biotic damage:"
+        />
+    <EditText
+        android:id="@+id/edit_event_biotic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abiotic damage:"
+        />
+    <EditText
+        android:id="@+id/edit_event_a_biotic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mark_following_hazard_if_necessarily"
+        />
+    <CheckBox
+        android:id="@+id/chb_forkedTrunks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forked_trunks"
+        android:onClick="onHazardClicked"
+        />
+    <CheckBox
+        android:id="@+id/chb_decay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signs_of_decay"
+        android:onClick="onHazardClicked"
+        />
+    <CheckBox
+        android:id="@+id/chb_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dangerous_balance_more_than_10_degree"
+        android:onClick="onHazardClicked"
+        />
+    <CheckBox
+        android:id="@+id/chb_brokenBranches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/broken_or_forked_branches"
+        android:onClick="onHazardClicked"/>
+    <CheckBox
+        android:id="@+id/chb_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="@string/remove_tree"
+        android:onClick="onHazardClicked"
+        />
+        <Button
+            android:id="@+id/btn_add_pics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/regular_button"
+            android:text="Upload supporting photos"
+            />
+    <Button
+        android:id="@+id/btn_event_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/regular_button"
+        android:layout_marginTop="3dp"
+        android:text="Save event"
+        />
+</LinearLayout>

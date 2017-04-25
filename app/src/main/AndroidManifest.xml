@@ -75,7 +75,8 @@
         <activity android:name=".BigPicture" />
         <activity android:name=".AddPics" />
         <activity android:name=".LoadingScreenActivity" />
-        <activity android:name=".EditTree"></activity>
+        <activity android:name=".EditTree" />
+        <activity android:name=".AddEvent"></activity>
     </application>
 
 </manifest>
