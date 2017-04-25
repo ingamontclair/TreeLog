@@ -25,6 +25,9 @@ public class TreeHistoryData implements Serializable{
    // private TreeData treeData;
     private List<TreeImages> treeImages;
 
+    public TreeHistoryData() {
+    }
+
     public TreeHistoryData(String treeID, String userID, String entryDate, String treeTrunkPicURL, String treeHistoryDiametr, String treeHistorySize, String treeHistoryBiotic, String treeHistory_a_Biotic, String treeHistoryPitURL, String treeHistoryPitComments, String treeHistoryHazard) {
         this.treeID = treeID;
         this.userID = userID;

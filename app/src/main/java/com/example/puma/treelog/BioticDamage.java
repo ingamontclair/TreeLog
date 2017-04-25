@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeHistoryData;
 import com.example.puma.treelog.models.TreeSession;
 
 public class BioticDamage extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class BioticDamage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biotic_damage);
+        Intent intent = getIntent();
+        final Bundle bundle = intent.getExtras();
         bioticTypes=getResources().getStringArray(R.array.biotic_source);
         lv_biotic=(ListView)findViewById(R.id.list_biotic);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,bioticTypes);
@@ -27,9 +30,12 @@ public class BioticDamage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
                 view.setBackgroundColor(Color.LTGRAY);
-                Intent exIntent=new Intent(BioticDamage.this, TreeCondition.class);
                 TreeData treeData = TreeSession.getInstance().getTreeData();
+                TreeHistoryData treeHistoryDataData = TreeSession.getInstance().getTreeHistoryData();
+                Class tmpClass = (Class) bundle.get("className");
+                treeHistoryDataData.setTreeHistoryBiotic(bioticTypes[pstn]);
                 treeData.setBioticDamage(bioticTypes[pstn]);
+                Intent exIntent=new Intent(BioticDamage.this, tmpClass); //getting classname to call activity to return to
                 startActivity(exIntent);
             }
         });

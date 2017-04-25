@@ -101,6 +101,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/regular_button"
         android:layout_marginTop="3dp"
-        android:text="Save event"
+        android:text="Update History"
         />
 </LinearLayout>

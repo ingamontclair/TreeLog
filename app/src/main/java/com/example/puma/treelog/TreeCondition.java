@@ -98,6 +98,7 @@ public class TreeCondition extends AppCompatActivity {
             TreeData treeData = TreeSession.getInstance().getTreeData();
             treeData.setBioticDamage(editBiotic.getText().toString());
                 Intent exIntent = new Intent(TreeCondition.this, BioticDamage.class);
+                exIntent.putExtra("className", TreeCondition.class);
                 startActivity(exIntent);
         }
     }
@@ -107,6 +108,7 @@ public class TreeCondition extends AppCompatActivity {
             TreeData treeData = TreeSession.getInstance().getTreeData();
             treeData.setA_bioticDamage(editABiotic.getText().toString());
                 Intent exIntent = new Intent(TreeCondition.this, AbioticDamage.class);
+            exIntent.putExtra("className", TreeCondition.class);
                 startActivity(exIntent);
 
         }

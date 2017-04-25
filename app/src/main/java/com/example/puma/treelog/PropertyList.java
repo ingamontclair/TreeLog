@@ -30,7 +30,7 @@ public class PropertyList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int pstn, long l) {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 view.setBackgroundColor(Color.LTGRAY);
-                Class tmpClass = (Class) bundle.get("className");
+                Class tmpClass = (Class) bundle.get("className"); //getting classname to call activity to return to
                 Intent exIntent=new Intent(PropertyList.this, tmpClass);
                 treeData.setPropertyType(propertyTypes[pstn]);
                 startActivity(exIntent);
