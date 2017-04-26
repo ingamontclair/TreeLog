@@ -33,7 +33,9 @@ public class BioticDamage extends AppCompatActivity {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 TreeHistoryData treeHistoryDataData = TreeSession.getInstance().getTreeHistoryData();
                 Class tmpClass = (Class) bundle.get("className");
-                treeHistoryDataData.setTreeHistoryBiotic(bioticTypes[pstn]);
+                if (treeHistoryDataData != null) {
+                    treeHistoryDataData.setTreeHistoryBiotic(bioticTypes[pstn]);
+                }
                 treeData.setBioticDamage(bioticTypes[pstn]);
                 Intent exIntent=new Intent(BioticDamage.this, tmpClass); //getting classname to call activity to return to
                 startActivity(exIntent);

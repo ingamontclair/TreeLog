@@ -101,6 +101,13 @@ public class EditTree extends AppCompatActivity {
         public void onClick(View view) {
             if (view.getId() == R.id.btn_updateTree) {
                 TreeData treeData = TreeSession.getInstance().getTreeData();
+                treeData.setTreeName(updateTreeName.getText().toString());
+                treeData.setStreetAddress(updateTreeStreetAddress.getText().toString());
+                treeData.setLatitude(updateTreeLatitude.getText().toString());
+                treeData.setLongitude(updateTreeLongitude.getText().toString());
+                treeData.setSpecies(updateTreeSpecies.getText().toString());
+                treeData.setTreeType(updateTreeType.getText().toString());
+                treeData.setPropertyType(updateTreeProperty.getText().toString());
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
                 DatabaseReference treeRef = myref.child(treeData.getTreeId());
                 treeRef.setValue(treeData);
