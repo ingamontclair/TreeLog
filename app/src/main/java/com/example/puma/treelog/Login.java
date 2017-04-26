@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
@@ -44,9 +45,14 @@ public class Login extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        if (auth.getCurrentUser() != null) {
+        FirebaseUser fbUser = auth.getCurrentUser();
+        if (fbUser != null) {
             User user = new User();
-            user.setUserName(auth.getCurrentUser().getDisplayName());
+            if (fbUser.getDisplayName() != null)
+                user.setUserName(auth.getCurrentUser().getDisplayName());
+            else
+                user.setUserName(auth.getCurrentUser().getEmail());
+
             com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
             startActivity(new Intent(Login.this, WelcomeActivity.class));
             finish();

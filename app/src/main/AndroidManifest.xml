@@ -53,8 +53,7 @@
         <activity android:name=".Register" />
         <activity
             android:name=".TreeHistory"
-            android:label="@string/title_activity_tree_history"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_tree_history" />
         <activity android:name=".TreeList" />
         <activity android:name=".TreeImagesList" />
         <!--
