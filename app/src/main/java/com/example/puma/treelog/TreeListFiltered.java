@@ -2,13 +2,13 @@ package com.example.puma.treelog;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeSession;
+import com.example.puma.treelog.utils.BaseActivity;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.CustomizedListAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TreeListFiltered extends AppCompatActivity {
+public class TreeListFiltered extends BaseActivity {
     private DatabaseReference mDatabase;
     CustomizedListAdapter adapter;
     ArrayList<TreeData> treeList = new ArrayList<>();

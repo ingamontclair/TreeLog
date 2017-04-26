@@ -1,15 +1,14 @@
 package com.example.puma.treelog;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeSession;
+import com.example.puma.treelog.utils.BaseActivity;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.CustomizedListAdapter;
 import com.example.puma.treelog.utils.FireBase;
@@ -20,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
-public class TreeList extends AppCompatActivity {
+public class TreeList extends BaseActivity {
     ListView treeListView;
     CustomizedListAdapter adapter;
     ChildEventListener mChildEventListener;
@@ -45,7 +44,7 @@ public class TreeList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        myRef= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
+        myRef = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

@@ -2,9 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_welcome"
+        android:title="Welcome Screen"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_new_tree"
-        android:title="New Tree"
-        app:showAsAction="never" />
+        android:title="New Tree" />
     <item
         android:id="@+id/menu_list_tree"
         android:title="Tree List in area" />

@@ -11,13 +11,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.puma.treelog.utils.AlbumStorageDirFactory;
+import com.example.puma.treelog.utils.BaseActivity;
 import com.example.puma.treelog.utils.BaseAlbumDirFactory;
 import com.example.puma.treelog.utils.FroyoAlbumDirFactory;
 
@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class TakeTreePic extends AppCompatActivity {
+public class TakeTreePic extends BaseActivity {
 
     private static final int ACTION_TAKE_PHOTO_B = 1;
     private static final int ACTION_TAKE_PHOTO_S = 2;

@@ -8,10 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,18 +15,18 @@ import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.User;
+import com.example.puma.treelog.utils.BaseActivity;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FireBase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
-public class WelcomeActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class WelcomeActivity extends BaseActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private Button btnLocateME; //button for fencing?
 
     /**
@@ -91,64 +87,6 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu); //your file name
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        // Handle item selection
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.menu_new_tree:
-                //start activity to make a new tree
-                intent = new Intent(WelcomeActivity.this, LocateNewTree.class);
-                startActivity(intent);
-                //Toast.makeText(WelcomeActivity.this, "New tree clicked", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menu_list_tree:
-                //start list tree activity in the fenced area
-                intent = new Intent(WelcomeActivity.this, TreeList.class);
-                startActivity(intent);
-                //Toast.makeText(WelcomeActivity.this, "Clicked List os trees", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menu_list_tree_filtered:
-                //start list tree activity in the fenced area
-                intent = new Intent(WelcomeActivity.this, TreeListFiltered.class);
-                startActivity(intent);
-                //Toast.makeText(WelcomeActivity.this, "Clicked List os trees", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menu_make_photo:
-                //load camera for making picture (quick access for making photos)
-                intent = new Intent(WelcomeActivity.this, TakeTreePic.class);
-                startActivity(intent);
-                //Toast.makeText(WelcomeActivity.this, "Clicked Camera", Toast.LENGTH_LONG).show();
-                return true;
-            case R.id.menu_map:
-                startActivity(new Intent(WelcomeActivity.this, LoadingScreenActivity.class));
-                return true;
-            case R.id.menu_logout:
-                FirebaseAuth.getInstance().signOut();
-                finish();
-                intent = new Intent(WelcomeActivity.this, Login.class);
-                startActivity(intent);
-                return true;
-            case R.id.menu_exit:
-                moveTaskToBack(true);
-                //android.os.Process.killProcess(android.os.Process.myPid());
-                //System.exit(1);
-                FirebaseAuth.getInstance().signOut();
-                finish();
-                System.exit(1);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onConnected(@Nullable Bundle bundle) {
 
     }
@@ -187,8 +125,7 @@ public class WelcomeActivity extends AppCompatActivity implements GoogleApiClien
 
     // Checks for user response to permission request
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0

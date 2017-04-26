@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +45,7 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            User user=new User();
+            User user = new User();
             user.setUserName(auth.getCurrentUser().getDisplayName());
             com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
             startActivity(new Intent(Login.this, WelcomeActivity.class));
@@ -96,7 +95,7 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                final String userName=email;
+                                final String userName = email;
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
@@ -109,7 +108,7 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    User user=new User();
+                                    User user = new User();
                                     user.setUserName(userName);
                                     com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
                                     Intent intent = new Intent(Login.this, WelcomeActivity.class);
@@ -151,7 +150,7 @@ public class Login extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() != null) {
                     //username = firebaseAuth.getCurrentUser().getEmail();
                     //Toast.makeText(Login.this, "You are already signed in", Toast.LENGTH_SHORT).show();
-                    User user=new User();
+                    User user = new User();
                     user.setUserName(firebaseAuth.getCurrentUser().getDisplayName());
                     com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
                     Intent intent = new Intent(Login.this, WelcomeActivity.class);
@@ -193,7 +192,7 @@ public class Login extends AppCompatActivity {
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            User user=new User();
+            User user = new User();
             user.setUserName(acct.getDisplayName());
             com.example.puma.treelog.models.TreeSession.getInstance().setUser(user);
             //mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));

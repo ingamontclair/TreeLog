@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.puma.treelog.models.TreeData;
 import com.example.puma.treelog.models.TreeSession;
+import com.example.puma.treelog.utils.BaseActivity;
 import com.example.puma.treelog.utils.Constants;
 import com.example.puma.treelog.utils.FetchAddressIntentService;
 import com.google.android.gms.common.ConnectionResult;
@@ -27,7 +27,7 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 
-public class LocateNewTree extends AppCompatActivity
+public class LocateNewTree extends BaseActivity
         implements ConnectionCallbacks, OnConnectionFailedListener {
     public static final String EXTRA_TREE_DATA = "EXTRA_TREE_DATA";
     private EditText mLatitudeText; //editText for Latitude
@@ -78,7 +78,7 @@ public class LocateNewTree extends AppCompatActivity
         //Intent locateNewTree = getIntent();
         //Bundle bundle = locateNewTree.getExtras();
         TreeData treeData = TreeSession.getInstance().getTreeData();
-        if (treeData == null){
+        if (treeData == null) {
             treeData = new TreeData();
             TreeSession.getInstance().setTreeData(treeData);
 
@@ -160,7 +160,7 @@ public class LocateNewTree extends AppCompatActivity
                     }
                 } else {
                     ActivityCompat.requestPermissions(LocateNewTree.this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 }
             }
         }

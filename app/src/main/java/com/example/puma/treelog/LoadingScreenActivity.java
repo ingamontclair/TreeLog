@@ -1,14 +1,14 @@
 package com.example.puma.treelog;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-public class LoadingScreenActivity extends AppCompatActivity {
+import com.example.puma.treelog.utils.BaseActivity;
+
+public class LoadingScreenActivity extends BaseActivity {
     private final int DELAY = 3000;
     private ProgressBar progressBar;
 
@@ -24,7 +24,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.spinner);
         progressBar.setVisibility(View.VISIBLE);
 
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -32,7 +32,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent mainIntent = new Intent(LoadingScreenActivity.this,MapsActivity.class);
+                Intent mainIntent = new Intent(LoadingScreenActivity.this, MapsActivity.class);
                 mainIntent.putExtra("address", address);
                 mainIntent.putExtra("latitude", lat);
                 mainIntent.putExtra("longitude", lon);
