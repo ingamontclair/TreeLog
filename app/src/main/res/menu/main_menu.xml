@@ -9,6 +9,9 @@
         android:id="@+id/menu_list_tree"
         android:title="Tree List in area" />
     <item
+        android:id="@+id/menu_list_tree_filtered"
+        android:title="Tree List Filtered" />
+    <item
         android:id="@+id/menu_make_photo"
         android:title="Make a photo" />
     <item
