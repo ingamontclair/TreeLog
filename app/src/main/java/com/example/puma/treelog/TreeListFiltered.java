@@ -1,11 +1,16 @@
 package com.example.puma.treelog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.puma.treelog.models.TreeData;
+import com.example.puma.treelog.models.TreeSession;
+import com.example.puma.treelog.utils.Constants;
+import com.example.puma.treelog.utils.CustomizedListAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +24,8 @@ import butterknife.ButterKnife;
 
 public class TreeListFiltered extends AppCompatActivity {
     private DatabaseReference mDatabase;
+    CustomizedListAdapter adapter;
+    ArrayList<TreeData> treeList = new ArrayList<>();
 
     @BindView(R.id.lv_tree_list_filter)
     ListView treeListView;
@@ -27,27 +34,30 @@ public class TreeListFiltered extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_list_filtered);
-
         ButterKnife.bind(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Tree");
-        final ArrayList<String> treeList = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.FIRBASE_TREE_DATA);
+
+        adapter = new CustomizedListAdapter(this, treeList);
+        treeListView.setAdapter(adapter);
+        treeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TreeSession.getInstance().setTreeData(treeList.get(position));
+                Intent intent = new Intent(TreeListFiltered.this, TreeHistory.class);
+                startActivity(intent);
+            }
+        });
 
         mDatabase.orderByValue().limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int i = 0;
-
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     TreeData treeItem = child.getValue(TreeData.class);
                     treeItem.setTreeId(child.getKey());
-//                    treeList.add(treeItem);
-                    treeList.add(++i + ". " + treeItem.getTreeName() + ":  " + treeItem.getStreetAddress());
+                    treeList.add(treeItem);
                 }
-
-                //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Leaderboard.this, android.R.layout.simple_list_item_1, players);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(TreeListFiltered.this, android.R.layout.simple_list_item_1, treeList);
-                treeListView.setAdapter(arrayAdapter);
             }
 
             @Override
