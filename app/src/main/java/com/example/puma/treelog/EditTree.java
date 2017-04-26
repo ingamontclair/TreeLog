@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//Class to save essential tree data like species, location coordinates etc
 public class EditTree extends AppCompatActivity {
     private EditText updateTreeName;
     private EditText updateTreeStreetAddress;

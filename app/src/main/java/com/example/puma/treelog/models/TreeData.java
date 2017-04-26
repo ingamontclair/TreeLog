@@ -30,7 +30,7 @@ public class TreeData implements Serializable {
     private String photoMainURL; //url string for the main photo
     private String dateCreated; // a date when a tree was created in DB
     private String treeName; //Name of the tree to display in the list or on the map
-    private List <TreeHistoryData> treeHistoryDatas;
+    private List<TreeHistoryData> treeHistoryDatas;
 
     public List<TreeHistoryData> getTreeHistoryDatas() {
         return treeHistoryDatas;
@@ -49,6 +49,7 @@ public class TreeData implements Serializable {
         this.treeType = treeType;
         this.treeName = treeName;
     }
+
     public String getTreeId() {
         return treeId;
     }
@@ -56,6 +57,7 @@ public class TreeData implements Serializable {
     public void setTreeId(String treeId) {
         this.treeId = treeId;
     }
+
     public String getTreeName() {
         return treeName;
     }
@@ -71,9 +73,6 @@ public class TreeData implements Serializable {
     public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
-/*NOT listed from client's list: tree trunk picture, other possible pictures*/
-    /*TODO: add missing pictures in this bean and design */
-    /*TODO: add dateModyfied and log*/
 
     public String getPhotoPitURL() {
         return photoPitURL;
@@ -106,7 +105,6 @@ public class TreeData implements Serializable {
     public void setRemove(String remove) {
         this.remove = remove;
     }
-
 
 
     public String getBioticDamage() {

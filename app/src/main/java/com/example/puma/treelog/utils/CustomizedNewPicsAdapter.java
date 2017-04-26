@@ -22,13 +22,13 @@ import java.util.ArrayList;
 public class CustomizedNewPicsAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<TreeImages> data;
-    private static LayoutInflater inflater=null;
+    private static LayoutInflater inflater = null;
     //public ImageLoader imageLoader;
 
     public CustomizedNewPicsAdapter(Activity a, ArrayList<TreeImages> d) {
         activity = a;
-        data=d;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        data = d;
+        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //imageLoader=new ImageLoader(activity.getApplicationContext());
     }
 
@@ -45,11 +45,11 @@ public class CustomizedNewPicsAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view =convertView;
-        if(convertView==null)
+        View view = convertView;
+        if (convertView == null)
             view = inflater.inflate(R.layout.add_pic_row, null);
-        EditText editDescription = (EditText)view.findViewById(R.id.edit_imageDescription);
-        ImageView thumb_image=(ImageView)view.findViewById(R.id.list_image); // thumb image
+        EditText editDescription = (EditText) view.findViewById(R.id.edit_imageDescription);
+        ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image); // thumb image
 
         TreeImages treeImages = data.get(position);
 
