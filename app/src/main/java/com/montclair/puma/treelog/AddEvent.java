@@ -1,9 +1,14 @@
 package com.montclair.puma.treelog;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,13 +18,16 @@ import android.widget.Toast;
 
 import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeHistoryData;
+import com.montclair.puma.treelog.models.TreeImageData;
 import com.montclair.puma.treelog.models.TreeSession;
 import com.montclair.puma.treelog.models.User;
 import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.FireBase;
 import com.google.firebase.database.DatabaseReference;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -34,6 +42,9 @@ public class AddEvent extends AppCompatActivity {
     private EditText editEventSize;
     private EditText editEventBiotic;
     private EditText editEventAbiotic;
+    private static  int PICK_PHOTO_CODE=1004;
+    ArrayList<Bitmap> mBitmapsSelected;
+    ArrayList<Uri> mArrayUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,8 @@ public class AddEvent extends AppCompatActivity {
         tvTreeName.setText(treeData.getTreeName());
 
         btnAddPics = (Button) findViewById(R.id.btn_add_pics);
+        btnAddPics.setOnClickListener(new AddPicLstr());
+
         btnCommitEvent = (Button) findViewById(R.id.btn_event_commit);
         btnCommitEvent.setOnClickListener(new CommitEventLstr());
 
@@ -150,6 +163,67 @@ public class AddEvent extends AppCompatActivity {
         }
     }
 
+    class AddPicLstr implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.btn_add_pics) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
+            }
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==PICK_PHOTO_CODE) {
+
+            if (data.getClipData() != null) {
+                ClipData mClipData = data.getClipData();
+                mArrayUri = new ArrayList<Uri>();
+                mBitmapsSelected = new ArrayList<Bitmap>();
+                for (int i = 0; i < mClipData.getItemCount(); i++) {
+                    ClipData.Item item = mClipData.getItemAt(i);
+                    Uri uri = item.getUri();
+                    mArrayUri.add(uri);
+                    // !! You may need to resize the image if it's too large
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    mBitmapsSelected.add(bitmap);
+                }
+            }
+
+
+
+
+        }
+
+
+
+        TreeSession treeSession = TreeSession.getInstance();
+        TreeImageData treeImageData = new TreeImageData();
+
+        //We have stored multiple selected images from gallery to List and corrosponding local url  of image
+        treeImageData.setTreeImages(mBitmapsSelected);
+        treeImageData.setTreeImmageUri(mArrayUri);
+
+        treeSession.setTreeImageData(treeImageData);
+        Intent intent = new Intent(AddEvent.this, AddPics.class);
+
+        startActivity(intent);
+
+    }
+
     class CommitEventLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -158,6 +232,9 @@ public class AddEvent extends AppCompatActivity {
                 //TreeHistoryData treeHistoryData = new TreeHistoryData();
                 TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
                 User user = TreeSession.getInstance().getUser();
+                TreeImageData treeimageData=TreeSession.getInstance().getTreeImageData();
+
+
                 treeHistoryData.setTreeID(treeData.getTreeId());
                 treeHistoryData.setUserID(user.getUserID());
                 Calendar c = Calendar.getInstance();
@@ -171,6 +248,9 @@ public class AddEvent extends AppCompatActivity {
                 treeHistoryData.setTreeHistory_a_Biotic(editEventAbiotic.getText().toString());
                 treeHistoryData.setTreeHistoryPitURL("");
                 treeHistoryData.setTreeHistoryPitComments("");
+                //treeHistoryData.setTreeImageUri(TreeSession.getInstance().getTreeHistoryData().getTreeImageUri());
+
+                //Log.d("Tree History Uri",""+treeHistoryData.getTreeImageUri().toString());
                 //get hazard from checked types
                 String tmpHazard = "";
                 for (String s : hazard.keySet()) {

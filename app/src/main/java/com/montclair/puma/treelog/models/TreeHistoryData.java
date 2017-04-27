@@ -1,5 +1,7 @@
 package com.montclair.puma.treelog.models;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class TreeHistoryData implements Serializable{
     private String treeHistoryHazard; //new tree hazard info
    // private TreeData treeData;
     private List<TreeImages> treeImages;
+  //  private List<String> treeImageUri;
 
     public TreeHistoryData() {
     }
@@ -38,7 +41,9 @@ public class TreeHistoryData implements Serializable{
         this.treeHistoryPitURL = treeHistoryPitURL;
         this.treeHistoryPitComments = treeHistoryPitComments;
         this.treeHistoryHazard = treeHistoryHazard;
+        //this.treeImageUri=treeImageUri;
     }
+
 
     public List<TreeImages> getTreeImages() {
         return treeImages;
