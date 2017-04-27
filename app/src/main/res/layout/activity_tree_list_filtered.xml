@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.puma.treelog.TreeListFiltered">
+    tools:context="com.montclair.puma.treelog.TreeListFiltered">
 
     <ListView
         android:id="@+id/lv_tree_list_filter"

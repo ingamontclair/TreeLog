@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.puma.treelog">
+    package="com.montclair.puma.treelog">
 
     <uses-sdk
         android:minSdkVersion="4"
@@ -20,20 +20,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity android:name="com.montclair.puma.treelog.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".LocateNewTree" />
-        <activity android:name=".PropertyList" />
-        <activity android:name=".LeafIdentification" />
-        <activity android:name=".TreeMeasurement" />
-        <activity android:name=".TreeTypeList" />
-        <activity android:name=".TreePit" />
+        <activity android:name="com.montclair.puma.treelog.WelcomeActivity" />
+        <activity android:name="com.montclair.puma.treelog.LocateNewTree" />
+        <activity android:name="com.montclair.puma.treelog.PropertyList" />
+        <activity android:name="com.montclair.puma.treelog.LeafIdentification" />
+        <activity android:name="com.montclair.puma.treelog.TreeMeasurement" />
+        <activity android:name="com.montclair.puma.treelog.TreeTypeList" />
+        <activity android:name="com.montclair.puma.treelog.TreePit" />
 
         <!--
         Service to asynchronously fetch a location address using a Geocoder. Setting the
@@ -41,21 +41,21 @@
         service, even when using an explicit intent.
         -->
         <service
-            android:name=".utils.FetchAddressIntentService"
+            android:name="com.montclair.puma.treelog.utils.FetchAddressIntentService"
             android:exported="false" />
 
-        <activity android:name=".TakeTreePic" />
-        <activity android:name=".TreeCondition" />
-        <activity android:name=".TreeFinalPic" />
-        <activity android:name=".BioticDamage" />
-        <activity android:name=".AbioticDamage" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Register" />
+        <activity android:name="com.montclair.puma.treelog.TakeTreePic" />
+        <activity android:name="com.montclair.puma.treelog.TreeCondition" />
+        <activity android:name="com.montclair.puma.treelog.TreeFinalPic" />
+        <activity android:name="com.montclair.puma.treelog.BioticDamage" />
+        <activity android:name="com.montclair.puma.treelog.AbioticDamage" />
+        <activity android:name="com.montclair.puma.treelog.MainActivity" />
+        <activity android:name="com.montclair.puma.treelog.Register" />
         <activity
-            android:name=".TreeHistory"
+            android:name="com.montclair.puma.treelog.TreeHistory"
             android:label="@string/title_activity_tree_history" />
-        <activity android:name=".TreeList" />
-        <activity android:name=".TreeImagesList" />
+        <activity android:name="com.montclair.puma.treelog.TreeList" />
+        <activity android:name="com.montclair.puma.treelog.TreeImagesList" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -69,14 +69,14 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="com.montclair.puma.treelog.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".BigPicture" />
-        <activity android:name=".AddPics" />
-        <activity android:name=".LoadingScreenActivity" />
-        <activity android:name=".EditTree" />
-        <activity android:name=".AddEvent" />
-        <activity android:name=".TreeListFiltered" />
+        <activity android:name="com.montclair.puma.treelog.BigPicture" />
+        <activity android:name="com.montclair.puma.treelog.AddPics" />
+        <activity android:name="com.montclair.puma.treelog.LoadingScreenActivity" />
+        <activity android:name="com.montclair.puma.treelog.EditTree" />
+        <activity android:name="com.montclair.puma.treelog.AddEvent" />
+        <activity android:name="com.montclair.puma.treelog.TreeListFiltered" />
     </application>
 
 </manifest>

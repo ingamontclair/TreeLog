@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.puma.treelog.LoadingScreenActivity">
+    tools:context="com.montclair.puma.treelog.LoadingScreenActivity">
 
     <TextView
         android:layout_width="wrap_content"

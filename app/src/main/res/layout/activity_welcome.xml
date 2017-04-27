@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/tree"
-    tools:context="com.example.puma.treelog.WelcomeActivity">
+    tools:context="com.montclair.puma.treelog.WelcomeActivity">
 
     <TextView
         android:id="@+id/wc_msg"

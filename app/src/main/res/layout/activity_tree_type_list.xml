@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.puma.treelog.TreeTypeList">
+    tools:context="com.montclair.puma.treelog.TreeTypeList">
     <ListView
         android:id="@+id/list_treetype"
         android:layout_height="wrap_content"

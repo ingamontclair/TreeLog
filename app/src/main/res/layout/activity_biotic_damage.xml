@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.puma.treelog.BioticDamage">
+    tools:context="com.montclair.puma.treelog.BioticDamage">
     <ListView
         android:id="@+id/list_biotic"
         android:layout_height="wrap_content"
