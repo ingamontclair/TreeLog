@@ -6,16 +6,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.montclair.puma.treelog.models.TreeData;
-import com.montclair.puma.treelog.models.TreeSession;
-import com.montclair.puma.treelog.utils.BaseActivity;
-import com.montclair.puma.treelog.utils.Constants;
-import com.montclair.puma.treelog.utils.CustomizedListAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.montclair.puma.treelog.models.TreeData;
+import com.montclair.puma.treelog.models.TreeSession;
+import com.montclair.puma.treelog.utils.BaseActivity;
+import com.montclair.puma.treelog.utils.Constants;
+import com.montclair.puma.treelog.utils.CustomizedListAdapter;
 
 import java.util.ArrayList;
 
@@ -36,8 +36,6 @@ public class TreeListFiltered extends BaseActivity {
         setContentView(R.layout.activity_tree_list_filtered);
         ButterKnife.bind(this);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.FIRBASE_TREE_DATA);
-
         adapter = new CustomizedListAdapter(this, treeList);
         treeListView.setAdapter(adapter);
         treeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,6 +48,7 @@ public class TreeListFiltered extends BaseActivity {
             }
         });
 
+        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.FIRBASE_TREE_DATA);
         mDatabase.orderByValue().limitToFirst(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
