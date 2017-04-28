@@ -1,6 +1,8 @@
 package com.montclair.puma.treelog;
 
 import android.content.ClipData;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,17 +12,20 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
 import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeHistoryData;
 import com.montclair.puma.treelog.models.TreeImageData;
 import com.montclair.puma.treelog.models.TreeSession;
 import com.montclair.puma.treelog.models.User;
+import com.montclair.puma.treelog.utils.ChildEventListenerAdapter;
 import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.FireBase;
 import com.google.firebase.database.DatabaseReference;
@@ -42,7 +47,7 @@ public class AddEvent extends AppCompatActivity {
     private EditText editEventSize;
     private EditText editEventBiotic;
     private EditText editEventAbiotic;
-    private static  int PICK_PHOTO_CODE=1004;
+    private static int PICK_PHOTO_CODE = 1004;
     ArrayList<Bitmap> mBitmapsSelected;
     ArrayList<Uri> mArrayUri;
 
@@ -54,8 +59,8 @@ public class AddEvent extends AppCompatActivity {
         tvTreeName = (TextView) findViewById(R.id.tv_event_treeName);
         tvTreeName.setText(treeData.getTreeName());
 
-        btnAddPics = (Button) findViewById(R.id.btn_add_pics);
-        btnAddPics.setOnClickListener(new AddPicLstr());
+        //btnAddPics = (Button) findViewById(R.id.btn_add_pics);
+        //btnAddPics.setOnClickListener(new AddPicLstr());
 
         btnCommitEvent = (Button) findViewById(R.id.btn_event_commit);
         btnCommitEvent.setOnClickListener(new CommitEventLstr());
@@ -72,10 +77,10 @@ public class AddEvent extends AppCompatActivity {
         editEventBiotic.setOnClickListener(new BioticTypeLstr());
         editEventAbiotic.setOnClickListener(new ABioticTypeLstr());
 
-       // TreeData treeData = TreeSession.getInstance().getTreeData();
+        // TreeData treeData = TreeSession.getInstance().getTreeData();
 
         TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
-        if (treeHistoryData == null){
+        if (treeHistoryData == null) {
             treeHistoryData = new TreeHistoryData();
             TreeSession.getInstance().setTreeHistoryData(treeHistoryData);
         }
@@ -146,6 +151,7 @@ public class AddEvent extends AppCompatActivity {
             startActivity(exIntent);
         }
     }
+
     class ABioticTypeLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -163,16 +169,16 @@ public class AddEvent extends AppCompatActivity {
         }
     }
 
-    class AddPicLstr implements View.OnClickListener{
+    class AddPicLstr implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.btn_add_pics) {
+            //if (v.getId() == R.id.btn_add_pics) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
-            }
+           // }
 
         }
     }
@@ -182,7 +188,7 @@ public class AddEvent extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==PICK_PHOTO_CODE) {
+        if (requestCode == PICK_PHOTO_CODE) {
 
             if (data.getClipData() != null) {
                 ClipData mClipData = data.getClipData();
@@ -203,12 +209,7 @@ public class AddEvent extends AppCompatActivity {
                 }
             }
 
-
-
-
         }
-
-
 
         TreeSession treeSession = TreeSession.getInstance();
         TreeImageData treeImageData = new TreeImageData();
@@ -232,7 +233,7 @@ public class AddEvent extends AppCompatActivity {
                 //TreeHistoryData treeHistoryData = new TreeHistoryData();
                 TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
                 User user = TreeSession.getInstance().getUser();
-                TreeImageData treeimageData=TreeSession.getInstance().getTreeImageData();
+                TreeImageData treeimageData = TreeSession.getInstance().getTreeImageData();
 
 
                 treeHistoryData.setTreeID(treeData.getTreeId());
@@ -262,14 +263,86 @@ public class AddEvent extends AppCompatActivity {
                     tmpHazard = tmpHazard.replaceFirst(", $", "");
                 }
                 treeHistoryData.setTreeHistoryHazard(tmpHazard);
-
                 DatabaseReference myref = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_HISTORY_DATA);
-                myref.push().setValue(treeHistoryData);
+                //insert new record of thee History Update
+                DatabaseReference thdRef = myref.push(); //generate a unique key for a new history record
+                treeHistoryData.setTreeHistoryID(thdRef.getKey());
+                thdRef.setValue(treeHistoryData); //set value
+
+
+
+/*                myref.push().setValue(treeHistoryData).addOnSuccessListener(
+                        myref.addChildEventListener(                    new ChildEventListenerAdapter() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                //on event happend we set a new treeHistoryData session and save key to the field treeHistoryID
+                                TreeHistoryData treeHistoryData = dataSnapshot.getValue(TreeHistoryData.class);
+                                treeHistoryData.setTreeHistoryID(dataSnapshot.getKey());
+                                TreeSession.getInstance().setTreeHistoryData(treeHistoryData);
+
+                            }
+                        } )
+                );*/
+
                 Toast.makeText(AddEvent.this, "New record in history was added", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AddEvent.this, TreeHistory.class);
-                startActivity(intent);
+                CustomDialogClass cdd = new CustomDialogClass(AddEvent.this);
+                cdd.show();
+
+                //Intent intent = new Intent(AddEvent.this, TreeHistory.class);
+                //startActivity(intent);
             }
 
+        }
+    }
+
+    public class CustomDialogClass extends Dialog implements
+            android.view.View.OnClickListener {
+
+        public Activity currentActivity;
+        public Dialog d;
+        public Button confirmPics, backTree;
+
+        public CustomDialogClass(Activity a) {
+            super(a);
+            // Auto-generated constructor stub
+            this.currentActivity = a;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.upload_picture_confirm);
+            confirmPics = (Button) findViewById(R.id.btn_uploadPics);
+            backTree = (Button) findViewById(R.id.btn_BackToTree);
+            confirmPics.setOnClickListener(new AddPicLstr());
+            backTree.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent;
+            switch (view.getId()) {
+                case R.id.btn_BackToTree:
+                    //dismiss();
+                    intent = new Intent(AddEvent.this, TreeHistory.class);
+                    startActivity(intent);
+                    break;
+
+                case R.id.btn_uploadPics:
+                    confirmPics.setOnClickListener(new AddPicLstr());
+/*                    TreeData treeData = TreeSession.getInstance().getTreeData();
+                    DatabaseReference myref = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
+                    DatabaseReference treeRef = myref.child(treeData.getTreeId());
+                    treeRef.removeValue();*/
+/*                    Intent picIntent = new Intent(Intent.ACTION_PICK);
+                    picIntent.setType("image*//*");
+                    picIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    startActivityForResult(Intent.createChooser(picIntent, "Select Picture"), PICK_PHOTO_CODE);*/
+                default:
+                    break;
+            }
+            dismiss();
         }
     }
 }

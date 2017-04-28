@@ -49,7 +49,7 @@ public class TreeHistory extends BaseActivity {
     private Button btnEdit;
     //private Button btnPics;
     private Button btnAddEvent;
-    private Button btnAddPics;
+    private Button btnShowHistory;
     private Button btnMaps;
     private Button btnDeleteTree;
     private ImageView img_main_pic;
@@ -94,7 +94,8 @@ public class TreeHistory extends BaseActivity {
         //btnPics.setOnClickListener(new ImagesListLstr());
         btnAddEvent = (Button) findViewById(R.id.btn_add_event);
         btnAddEvent.setOnClickListener(new AddTreeEventLstr());
-
+        btnShowHistory = (Button) findViewById(R.id.btn_HistoryData);
+        btnShowHistory.setOnClickListener(new ShowHistoryLstr());
         //btnAddPics = (Button) findViewById(R.id.btn_add_pics);
         //btnAddPics.setOnClickListener(new AddPicsLstr());
 
@@ -286,6 +287,16 @@ public class TreeHistory extends BaseActivity {
         public void onClick(View view) {
             if (view.getId() == R.id.btn_add_event) {
                 Intent intent = new Intent(TreeHistory.this, AddEvent.class);
+                startActivity(intent);
+            }
+        }
+    }
+
+    class ShowHistoryLstr implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.btn_HistoryData){
+                Intent intent = new Intent (TreeHistory.this, ShowHistory.class);
                 startActivity(intent);
             }
         }

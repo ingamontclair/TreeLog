@@ -97,12 +97,6 @@
         android:text="Update History"
         />
 
-    <Button
-            android:id="@+id/btn_add_pics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/regular_button"
-            android:text="Upload supporting photos"
-        />
+
 
 </LinearLayout>

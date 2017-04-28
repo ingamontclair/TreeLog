@@ -9,31 +9,39 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.ButtCap;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeHistoryData;
 import com.montclair.puma.treelog.models.TreeImageData;
 import com.montclair.puma.treelog.models.TreeImages;
 import com.montclair.puma.treelog.models.TreeSession;
+import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.CustomizedNewPicsAdapter;
+import com.montclair.puma.treelog.utils.FireBase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AddPics extends AppCompatActivity {
     ListView treeNewImagesList;
     FirebaseStorage mFirebaseStorage;
     StorageReference mStorageReference;
     CustomizedNewPicsAdapter adapter;
-   ArrayList<TreeImages> treeImages  = new ArrayList<TreeImages>();
+    ArrayList<TreeImages> treeImages  = new ArrayList<TreeImages>();
     ArrayList<Bitmap> treeBitmapImages;
     ArrayList<Uri> treeImageUri;
     String photoURI;
-    ArrayList<String> photoUriList=new ArrayList<String>();
-    TreeHistoryData treeHistoryData;
+    //ArrayList<String> photoUriList=new ArrayList<String>();
+    //TreeHistoryData treeHistoryData;
     private Button addPics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,26 +89,36 @@ public class AddPics extends AppCompatActivity {
                 StorageReference storageReference = mStorageReference
                         .child(treeImageUri.get(j).getLastPathSegment());
 
-                storageReference.putFile(treeImageUri.get(j)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                                                       @Override
-                                                                                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                storageReference.putFile(treeImageUri.get(j)).addOnSuccessListener(
+                        new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                                                                           photoURI = taskSnapshot.getDownloadUrl().toString();
-                                                                                Log.d("Photouri",photoURI);// URl from firebase Storage for each image
-
-                                                                                       }
-                                                                                   }
+                                photoURI = taskSnapshot.getDownloadUrl().toString();
+                                Log.d("Photouri", photoURI);// URl from firebase Storage for each image
+                                //push right here to firebase
+  /*This Storage call is asynchronous, we need to process the results in on successful listener method */
+                                TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
+                                TreeImages treeImages = new TreeImages();
+                                treeImages.setTreeHistoryID(treeHistoryData.getTreeHistoryID());
+                                treeImages.setTreeID(treeHistoryData.getTreeID());
+                                treeImages.setTreeImageURL(photoURI);
+                                Calendar c = Calendar.getInstance();
+                                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+                                String datePhotoUploaded = df.format(c.getTime());
+                                treeImages.setTreeImageUploadDate(datePhotoUploaded);
+                                treeImages.setTreeDescription("");
+                                DatabaseReference imageRef = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_IMAGES);
+                                imageRef.push().setValue(treeImages);
+                                //Toast.makeText(AddPics.this, "url "+photoURI, Toast.LENGTH_SHORT).show();
+                            }
+                        }
                 );
-
-                photoUriList.add(photoURI);// Trying to add firebase image url to List
             }
 
-            //treeHistoryData.setTreeImageUri(photoUriList);
-            //TreeSession.getInstance().setTreeHistoryData(treeHistoryData);
+/*PICTURES ARE NOT YET STORED. WE WILL KNOW WHEN THE PICTURES ARE STORED IN THE OnSuccessListener WE REGISTERED EARLIER*/
 
-            Log.d("in Add pics","list"+photoUriList.get(1));// its not coming
-
-            Intent intent=new Intent(AddPics.this,AddEvent.class);
+            Intent intent=new Intent(AddPics.this,TreeHistory.class);
             startActivity(intent);
         }
 

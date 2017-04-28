@@ -35,9 +35,10 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-storage:1.2.0'
     compile 'com.firebaseui:firebase-ui:1.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.5.1'
+    testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
+
 
 apply plugin: 'com.google.gms.google-services'
