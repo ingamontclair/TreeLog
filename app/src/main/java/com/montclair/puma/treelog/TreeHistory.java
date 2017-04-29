@@ -50,6 +50,7 @@ public class TreeHistory extends BaseActivity {
     //private Button btnPics;
     private Button btnAddEvent;
     private Button btnShowHistory;
+    private Button btnShowPics;
     private Button btnMaps;
     private Button btnDeleteTree;
     private ImageView img_main_pic;
@@ -82,6 +83,9 @@ public class TreeHistory extends BaseActivity {
         tv_hazard = (TextView) findViewById(R.id.tv_tree_hazard);
         tv_tree_pit_comments = (TextView) findViewById(R.id.tv_tree_pit);
         img_main_pic = (ImageView) findViewById(R.id.iv_main_picture);
+
+        btnShowPics=(Button)findViewById(R.id.btn_pics);
+        btnShowPics.setOnClickListener(new showTreePics());
 
         btnEdit = (Button) findViewById(R.id.btn_Edit_tree);
 
@@ -225,6 +229,15 @@ public class TreeHistory extends BaseActivity {
         }
     }
 
+
+    class showTreePics implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(TreeHistory.this,ShowTreeImages.class);
+            startActivity(intent);
+        }
+    }
     class DeleteTreeLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {

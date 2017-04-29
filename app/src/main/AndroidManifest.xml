@@ -77,7 +77,8 @@
         <activity android:name=".EditTree" />
         <activity android:name=".AddEvent" />
         <activity android:name=".TreeListFiltered" />
-        <activity android:name=".ShowHistory"></activity>
+        <activity android:name=".ShowHistory" />
+        <activity android:name=".ShowTreeImages"></activity>
     </application>
 
 </manifest>

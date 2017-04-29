@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.montclair.puma.treelog.R;
 import com.montclair.puma.treelog.models.TreeData;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,14 @@ public class CustomizedListAdapter extends BaseAdapter {
         TreeData treeData = data.get(position);
 
         // Setting all values in listview
+
+        if(treeData.getPhotoMainURL()!=null){
+            Picasso.with(thumb_image.getContext())
+                    .load(treeData.getPhotoMainURL())
+                    .resize(30,30)
+                    .centerCrop()
+                    .into(thumb_image);
+        }
         tree_name.setText(treeData.getTreeName());
         street_address.setText(treeData.getStreetAddress());
         //imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
