@@ -69,6 +69,7 @@ public class TreeListFiltered extends LocationActivity {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                treeList = new ArrayList<>();
                 getCurrentLocation();
                 adapter = new CustomizedListAdapter(TreeListFiltered.this, treeList);
                 treeListView.setAdapter(adapter);
