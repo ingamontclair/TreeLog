@@ -8,9 +8,7 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 public class FireBase {
-
-    private static FirebaseDatabase fb=FirebaseDatabase.getInstance();
-    private DatabaseReference myref;
+    private static FirebaseDatabase fb = FirebaseDatabase.getInstance();
 
     private static FireBase ourInstance = new FireBase();
 
@@ -18,10 +16,7 @@ public class FireBase {
         return ourInstance;
     }
 
-    public DatabaseReference getFireBaseReference(String graph){
-        myref= fb.getReference(graph);
-        return myref;
+    public DatabaseReference getFireBaseReference(String graph) {
+        return fb.getReference(graph);
     }
-
-
 }
