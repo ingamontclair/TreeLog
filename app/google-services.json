@@ -54,7 +54,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:65457456191:android:a4fbcd4034b0eac3",
         "android_client_info": {
-          "package_name": "com.montclair.puma.treelog"
+          "package_name": "com.example.puma.treelog"
         }
       },
       "oauth_client": [
@@ -62,12 +62,56 @@
           "client_id": "65457456191-l5afneg421s45padhpvdgbe1aqlgb383.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.montclair.puma.treelog",
+            "package_name": "com.example.puma.treelog",
             "certificate_hash": "c8f96faa62398abf0a2a4f4c362afdaa065d8da5"
           }
         },
         {
           "client_id": "65457456191-42kub1oj3e3728mbal0m8beindq4an5d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.puma.treelog",
+            "certificate_hash": "83674f02a5964f5a2bad637e337a423814906584"
+          }
+        },
+        {
+          "client_id": "65457456191-1opf3sj7cnsgjvr37irm5aljhaohqs5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHOtfOOCGN2ai_4mruZQBbt-Ae0Pwd3AU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65457456191-1opf3sj7cnsgjvr37irm5aljhaohqs5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65457456191:android:2dec2cbf6cafed8d",
+        "android_client_info": {
+          "package_name": "com.montclair.puma.treelog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65457456191-d93lk3g7batvhk1i4d6ubj4bqdafst9i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.montclair.puma.treelog",
