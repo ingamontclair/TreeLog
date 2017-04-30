@@ -26,10 +26,6 @@ import java.util.List;
  */
 
 public class CustomizedTreeImagesListAdapter extends ArrayAdapter<TreeImages> {
-    private Activity activity;
-    private ArrayList<TreeImages> data;
-    private static LayoutInflater inflater=null;
-    private String treeNm;
 
     public CustomizedTreeImagesListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<TreeImages> objects) {
         super(context, resource, objects);
@@ -37,19 +33,16 @@ public class CustomizedTreeImagesListAdapter extends ArrayAdapter<TreeImages> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//        View view =convertView;
-//        if(convertView==null)
-//            view = inflater.inflate(R.layout.show_pic_row, null);
+
 
         convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.show_pic_row, parent, false);
-       // TextView treeName=(TextView)convertView.findViewById(R.id.tree_name);
+
         ImageView msgPic=(ImageView)convertView.findViewById(R.id.list_image);
 
-       // treeName.setText(treeNm);
 
-        TreeImages treeImages= (TreeImages) getItem(position);
+        TreeImages treeImages=getItem(position);
 
-        //Log.d("Get Image Url",""+treeImages.getTreeImageURL().toString());
+
 
         if(treeImages.getTreeImageURL() !=null){
             Picasso.with(msgPic.getContext())

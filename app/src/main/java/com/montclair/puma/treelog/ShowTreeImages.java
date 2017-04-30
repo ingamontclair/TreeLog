@@ -40,27 +40,13 @@ public class ShowTreeImages extends BaseActivity {
         setContentView(R.layout.activity_show_tree_images);
 
         treeListView=(ListView)findViewById(R.id.list_tree__extra_images);
-       treeId= TreeSession.getInstance().getTreeData().getTreeId();
+        treeId= TreeSession.getInstance().getTreeData().getTreeId();
         //Log.d("Tree id :",treeId);
 
         adapter = new CustomizedTreeImagesListAdapter(this,R.layout.show_pic_row,treeImageList);
         treeListView.setAdapter(adapter);
 
         myRef = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_IMAGES);
-
-       myRef.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-               long value=dataSnapshot.getChildrenCount();
-               Log.d("Data from Firebase","no of chaildern: "+value);
-
-           }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });
 
 
         myRef.addChildEventListener(new ChildEventListener() {
@@ -98,9 +84,5 @@ public class ShowTreeImages extends BaseActivity {
             }
         });
 
-
-
-
-        //Log.d("list Item",""+treeImageList.size());
     }
 }
