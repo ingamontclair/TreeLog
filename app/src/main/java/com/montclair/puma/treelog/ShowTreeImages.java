@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeImages;
 import com.montclair.puma.treelog.models.TreeSession;
+import com.montclair.puma.treelog.utils.BaseActivity;
 import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.CustomizedListAdapter;
 import com.montclair.puma.treelog.utils.CustomizedNewPicsAdapter;
@@ -24,7 +25,7 @@ import com.montclair.puma.treelog.utils.FireBase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowTreeImages extends AppCompatActivity {
+public class ShowTreeImages extends BaseActivity {
 
     private String treeId;
     ListView treeListView;
@@ -40,9 +41,11 @@ public class ShowTreeImages extends AppCompatActivity {
 
         treeListView=(ListView)findViewById(R.id.list_tree__extra_images);
        treeId= TreeSession.getInstance().getTreeData().getTreeId();
-        Log.d("Tree id :",treeId);
+        //Log.d("Tree id :",treeId);
 
-       //
+        adapter = new CustomizedTreeImagesListAdapter(this,R.layout.show_pic_row,treeImageList);
+        treeListView.setAdapter(adapter);
+
         myRef = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_IMAGES);
 
        myRef.addValueEventListener(new ValueEventListener() {
@@ -67,8 +70,9 @@ public class ShowTreeImages extends AppCompatActivity {
                 treeItem.setTreeImageID(dataSnapshot.getKey());
                 //Log.d("Tree Id in ",""+treeItem.getTreeID());
                 if(treeId.equals(treeItem.getTreeID())){
-                    treeImageList.add(treeItem);
-                    Log.d("Tree added","success");
+                    adapter.add(treeItem);
+                   // Log.d("Tree Photo URI",treeItem.getTreeImageURL());
+                   // Log.d("Tree added","success");
                 }
 
             }
@@ -94,8 +98,9 @@ public class ShowTreeImages extends AppCompatActivity {
             }
         });
 
-        adapter = new CustomizedTreeImagesListAdapter(this,treeImageList);
-        treeListView.setAdapter(adapter);
+
+
+
         //Log.d("list Item",""+treeImageList.size());
     }
 }
