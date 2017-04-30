@@ -17,8 +17,10 @@ import com.montclair.puma.treelog.models.TreeSession;
 import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.CustomizedListAdapter;
 import com.montclair.puma.treelog.utils.LocationActivity;
+import com.montclair.puma.treelog.utils.TreeDistanceComparator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,25 +46,23 @@ public class TreeListFiltered extends LocationActivity {
                 startActivity(intent);
             }
         });
-
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.FIRBASE_TREE_DATA);
-
     }
 
     public void load10(View view) {
-        load(10);
+        load(3);
+    }
+
+    public void load30(View view) {
+        load(9);
     }
 
     public void load100(View view) {
-        load(100);
+        load(30);
     }
 
-    public void load500(View view) {
-        load(500);
-    }
-
-    public void load5000(View view) {
-        load(5000);
+    public void load50000(View view) {
+        load(15240);
     }
 
     public void load(final int distanceInMeters) {
@@ -88,6 +88,7 @@ public class TreeListFiltered extends LocationActivity {
                         }
                     }
                 }
+                Collections.sort(treeList, new TreeDistanceComparator(mLastLocation));
             }
 
             @Override

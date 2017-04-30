@@ -20,15 +20,13 @@ import java.util.ArrayList;
  */
 
 public class CustomizedListAdapter extends BaseAdapter {
-    private Activity activity;
     private ArrayList<TreeData> data;
-    private static LayoutInflater inflater=null;
+    private static LayoutInflater inflater = null;
     //public ImageLoader imageLoader;
 
     public CustomizedListAdapter(Activity a, ArrayList<TreeData> d) {
-        activity = a;
-        data=d;
-        inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        data = d;
+        inflater = (LayoutInflater) a.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //imageLoader=new ImageLoader(activity.getApplicationContext());
     }
 
@@ -45,22 +43,21 @@ public class CustomizedListAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view =convertView;
-        if(convertView==null)
+        View view = convertView;
+        if (convertView == null)
             view = inflater.inflate(R.layout.list_row, null);
 
-        TextView tree_name = (TextView)view.findViewById(R.id.tv_list_tree_name); // title
-        TextView street_address = (TextView)view.findViewById(R.id.tv_list_streetaddress); // artist name
-        ImageView thumb_image=(ImageView)view.findViewById(R.id.list_image); // thumb image
+        TextView tree_name = (TextView) view.findViewById(R.id.tv_list_tree_name); // title
+        TextView street_address = (TextView) view.findViewById(R.id.tv_list_streetaddress); // artist name
+        ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image); // thumb image
 
         TreeData treeData = data.get(position);
 
         // Setting all values in listview
-
-        if(treeData.getPhotoMainURL()!=null){
+        if (treeData.getPhotoMainURL() != null) {
             Picasso.with(thumb_image.getContext())
                     .load(treeData.getPhotoMainURL())
-                    .resize(30,30)
+                    .resize(30, 30)
                     .centerCrop()
                     .into(thumb_image);
         }
