@@ -35,6 +35,7 @@ public class LocationActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         buildGoogleApiClient();
+        //every time we use Locate tree button while creating new tree LocationRequest retirns new updated location of the phone
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addLocationRequest(createLocationRequest());
     }
@@ -112,10 +113,10 @@ public class LocationActivity extends BaseActivity
     }
 
     protected LocationRequest createLocationRequest() {
-        LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10000);
-        mLocationRequest.setFastestInterval(5000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        LocationRequest mLocationRequest = new LocationRequest(); //initializing new location request object
+        mLocationRequest.setInterval(10000); //10 seconds is interval for requst updates
+        mLocationRequest.setFastestInterval(5000); //5 sec This method sets the fastest rate in milliseconds at which your app can handle location updates.
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);//request the most precise location possible. With this setting, the location services are more likely to use GPS to determine the location.
         return mLocationRequest;
     }
 }

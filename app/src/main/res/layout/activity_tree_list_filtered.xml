@@ -10,31 +10,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="4"
+        >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load10"
-            android:text="@string/_10_ft" />
+            android:background="@drawable/regular_button"
+            android:layout_weight="1"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:text="10 ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load30"
-            android:text="@string/_30_ft" />
+            android:background="@drawable/regular_button"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:text="30 ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load100"
-            android:text="@string/_100_ft" />
+            android:background="@drawable/regular_button"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:text="100 ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load50000"
-            android:text="@string/_50_000_ft" />
+            android:background="@drawable/regular_button"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:text="50,000 ft" />
     </LinearLayout>
 
     <ListView

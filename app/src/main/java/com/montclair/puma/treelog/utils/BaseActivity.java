@@ -17,6 +17,8 @@ import com.montclair.puma.treelog.TreeList;
 import com.montclair.puma.treelog.TreeListFiltered;
 import com.montclair.puma.treelog.WelcomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.montclair.puma.treelog.models.TreeData;
+import com.montclair.puma.treelog.models.TreeSession;
 
 /**
  * Created by elionlimanaj on 4/26/17.
@@ -47,6 +49,7 @@ public class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_new_tree:
                 //start activity to make a new tree
+                TreeSession.getInstance().setTreeData(new TreeData()); //clear session
                 intent = new Intent(this, LocateNewTree.class);
                 startActivity(intent);
                 //Toast.makeText(WelcomeActivity.this, "New tree clicked", Toast.LENGTH_LONG).show();
