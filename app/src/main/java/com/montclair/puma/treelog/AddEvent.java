@@ -241,6 +241,7 @@ public class AddEvent extends AppCompatActivity {
                     //TreeHistoryData treeHistoryData = new TreeHistoryData();
                     TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
                     User user = TreeSession.getInstance().getUser();
+                    User displayUser = com.montclair.puma.treelog.models.TreeSession.getInstance().getUser();
                     TreeImageData treeimageData = TreeSession.getInstance().getTreeImageData();
 
 
@@ -257,6 +258,7 @@ public class AddEvent extends AppCompatActivity {
                     treeHistoryData.setTreeHistory_a_Biotic(aBioTxt);
                     treeHistoryData.setTreeHistoryPitURL("");
                     treeHistoryData.setTreeHistoryPitComments("");
+                    treeHistoryData.setUserName(displayUser.getUserName());
                     //treeHistoryData.setTreeImageUri(TreeSession.getInstance().getTreeHistoryData().getTreeImageUri());
 
                     //Log.d("Tree History Uri",""+treeHistoryData.getTreeImageUri().toString());

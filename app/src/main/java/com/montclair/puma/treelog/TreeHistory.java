@@ -102,6 +102,7 @@ public class TreeHistory extends BaseActivity {
             tv_date_planted.setText(treeData.getDatePlanted());
             tv_property_type.setText(treeData.getPropertyType());
             tv_date_created.setText(treeData.getDateCreated());
+            tv_vol_creator.setText(treeData.getTreeMaker());
 
             // Log.d("Tree Photo URL ",treeData.getPhotoMainURL());
             if (treeData.getPhotoMainURL() != null) {

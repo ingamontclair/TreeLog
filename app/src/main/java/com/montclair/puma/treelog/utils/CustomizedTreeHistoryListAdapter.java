@@ -46,9 +46,9 @@ public class CustomizedTreeHistoryListAdapter extends ArrayAdapter<TreeHistoryDa
 
         TreeHistoryData treeHistoryData= getItem(position);
 
-/*Sey value section*/
+/*Set value section*/
         dateModified.setText(treeHistoryData.getEntryDate());
-        volModified.setText("Volunteer");
+        volModified.setText(treeHistoryData.getUserName());
         diametr.setText(treeHistoryData.getTreeHistoryDiametr());
         size.setText(treeHistoryData.getTreeHistorySize());
         biotic.setText(treeHistoryData.getTreeHistoryBiotic());

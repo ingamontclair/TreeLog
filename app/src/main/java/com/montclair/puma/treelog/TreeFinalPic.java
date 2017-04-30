@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import com.montclair.puma.treelog.models.User;
 import com.montclair.puma.treelog.utils.Constants;
 import com.montclair.puma.treelog.utils.FireBase;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -117,6 +118,7 @@ public class TreeFinalPic extends AppCompatActivity {
             if (view.getId() == R.id.btn_commit){
                 TreeData treeData = TreeSession.getInstance().getTreeData();
                 Calendar c = Calendar.getInstance();
+                User user = TreeSession.getInstance().getUser();
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
                 String dateCreated = df.format(c.getTime());
                 // tree Name initially generates from the species and street address
@@ -124,6 +126,7 @@ public class TreeFinalPic extends AppCompatActivity {
                 treeData.setTreeName(treeNameGen);
                 treeData.setDateCreated(dateCreated);
                 treeData.setPhotoMainURL(finalPhotoURI);
+                treeData.setTreeMaker(user.getUserName());
 //all TreeData is ready for commit - place for commit !!!
 
                 DatabaseReference myref= FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);

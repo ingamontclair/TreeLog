@@ -29,6 +29,7 @@ public class TreeData implements Serializable {
     private String photoMainURL; //url string for the main photo
     private String dateCreated; // a date when a tree was created in DB
     private String treeName; //Name of the tree to display in the list or on the map
+    private String treeMaker; //Name of the user that added the tree
     private List<TreeHistoryData> treeHistoryDatas;
 
     public List<TreeHistoryData> getTreeHistoryDatas() {
@@ -42,11 +43,20 @@ public class TreeData implements Serializable {
     public TreeData() {
     }
 
-    public TreeData(String streetAddress, String propertyType, String treeType, String treeName) {
+    public TreeData(String streetAddress, String propertyType, String treeType, String treeName, String treeMaker) {
         this.streetAddress = streetAddress;
         this.propertyType = propertyType;
         this.treeType = treeType;
         this.treeName = treeName;
+        this.treeMaker = treeMaker;
+    }
+
+    public String getTreeMaker() {
+        return treeMaker;
+    }
+
+    public void setTreeMaker(String treeMaker) {
+        this.treeMaker = treeMaker;
     }
 
     public String getTreeId() {

@@ -13,6 +13,7 @@ public class TreeHistoryData implements Serializable{
     private String treeHistoryID; //primary ID for new stage of the tree
     private String treeID; // for existing tree
     private String userID; //for existing user
+    private String userName; //for name of user updating
     private String entryDate; //current date as modified
     private String treeTrunkPicURL; //URL for trunk picture changed
     private String treeHistoryDiametr; //history of diameter changes
@@ -29,9 +30,10 @@ public class TreeHistoryData implements Serializable{
     public TreeHistoryData() {
     }
 
-    public TreeHistoryData(String treeID, String userID, String entryDate, String treeTrunkPicURL, String treeHistoryDiametr, String treeHistorySize, String treeHistoryBiotic, String treeHistory_a_Biotic, String treeHistoryPitURL, String treeHistoryPitComments, String treeHistoryHazard) {
+    public TreeHistoryData(String treeID, String userID, String entryDate, String treeTrunkPicURL, String treeHistoryDiametr, String treeHistorySize, String treeHistoryBiotic, String treeHistory_a_Biotic, String treeHistoryPitURL, String treeHistoryPitComments, String treeHistoryHazard, String userName) {
         this.treeID = treeID;
         this.userID = userID;
+        this.userName = userName;
         this.entryDate = entryDate;
         this.treeTrunkPicURL = treeTrunkPicURL;
         this.treeHistoryDiametr = treeHistoryDiametr;
@@ -60,6 +62,15 @@ public class TreeHistoryData implements Serializable{
     //public void setTreeData(TreeData treeData) {
         //this.treeData = treeData;
    // }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getTreeHistoryID() {
         return treeHistoryID;
