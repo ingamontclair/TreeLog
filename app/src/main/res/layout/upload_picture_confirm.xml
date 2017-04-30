@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="Do you want to upload supporting photo?"
-        android:textSize="15dp"
+        android:text="@string/supporting_photo"
+        android:textSize="15sp"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_height="40dp"
             android:clickable="true"
             android:background="@drawable/regular_button"
-            android:text="Yes"
+            android:text="@string/yes"
             />
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:text="Back to Tree"
+            android:text="@string/back_to_tree"
             android:background="@drawable/regular_button"
             android:clickable="true"
             />

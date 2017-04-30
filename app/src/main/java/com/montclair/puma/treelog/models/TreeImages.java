@@ -9,13 +9,13 @@ import java.io.Serializable;
  */
 
 public class TreeImages implements Serializable{
-    private String treeImageID; //image ID primary
+    private String treeImageID; //primary image ID
     private String treeID;
     private String treeHistoryID; //id of history event
     private String treeImageURL; //image URL
-    private String treeDescription; //tree Image description i. e. leaf, trunk, blooming etc
-    private String treeImageUploadDate; //tree image modified date
-    private Bitmap treeBitmapImage;// tree bitmap Image
+    private String treeDescription; //tree Image description i. e. leaf, trunk, blooming etc.
+    private String treeImageUploadDate; //date of tree image modification
+    private Bitmap treeBitmapImage;// tree bitmap image
 
     public String getTreeID() {
         return treeID;

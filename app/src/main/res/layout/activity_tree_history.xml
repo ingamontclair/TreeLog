@@ -96,12 +96,12 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date_planted"
-            />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_planted"
+                />
             <TextView
                 android:layout_weight="1"
                 android:id="@+id/tv_date_planted"
@@ -343,7 +343,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:background="@drawable/regular_button"
-                android:text="Show History"
+                android:text="@string/show_history"
                 />
             <Button
                 android:layout_weight="1"
@@ -351,7 +351,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/regular_button"
-                android:text="Add History"
+                android:text="@string/add_history"
                 />
         </LinearLayout>
         <LinearLayout
@@ -376,7 +376,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#FF0000"
                 android:background="@drawable/regular_button"
-                android:text="Delete"
+                android:text="@string/delete"
                 />
         </LinearLayout>
     </LinearLayout>

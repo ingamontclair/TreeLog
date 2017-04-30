@@ -36,8 +36,8 @@
 
     <string name="title_activity_maps">Map</string>
 
-    <string name="latitude_label">Latitude</string>
-    <string name="longitude_label">Longitude</string>
+    <string name="latitude_label">Latitude:</string>
+    <string name="longitude_label">Longitude:</string>
     <string name="no_location_detected">
         No location detected. Make sure location is enabled on the device.
     </string>
@@ -82,10 +82,10 @@
     <string name="choose_biotic_source_here">choose biotic source here</string>
     <string name="abiotic_source">Abiotic source</string>
     <string name="choose_abiotic_source_here">choose abiotic source here</string>
-    <string name="mark_following_hazard_if_necessarily">Mark following hazard if necessarily</string>
+    <string name="mark_following_hazard_if_necessarily">Mark the following hazards if necessary</string>
     <string name="forked_trunks">Forked Trunks</string>
     <string name="signs_of_decay">Signs of Decay</string>
-    <string name="dangerous_balance_more_than_10_degree">Dangerous balance (more than 10 degree)</string>
+    <string name="dangerous_balance_more_than_10_degree">Dangerous balance (more than 10 degrees)</string>
     <string name="broken_or_forked_branches">Broken or forked branches</string>
     <string name="remove_tree">Remove tree?</string>
     <string name="upload_picture_before_saving">Upload picture before saving</string>
@@ -95,21 +95,21 @@
     <string name="date_created">Date created:</string>
     <string name="pick_tree_icon_optional">Pick tree Icon (optional)</string>
     <string name="save_tree_to_database">Save tree to Database</string>
-    <string name="chose_tree_type_from_list">chose tree type from list</string>
+    <string name="choose_tree_type_from_list">choose tree type from list</string>
     <string name="when_the_tree_was_planted_apprx">When the tree was planted (apprx)</string>
     <string name="enter_date_when_planted">enter date when planted</string>
-    <string name="diametr_of_the_tree">Diametr of the tree</string>
-    <string name="enter_diametr">enter diametr</string>
+    <string name="diametr_of_the_tree">Diameter of the tree</string>
+    <string name="enter_diametr">enter diameter</string>
     <string name="size_of_the_tree">Size of the tree</string>
     <string name="enter_size_of_the_tree">enter size of the tree</string>
     <string name="tree_pit_information">Tree pit information:</string>
     <string name="comments">Comments:</string>
-    <string name="places_comments_on_tree_pit_condition_here">places comments on tree pit condition here</string>
-    <string name="chose_tree_type_here">Chose tree type here</string>
+    <string name="place_comments_on_tree_pit_condition_here">place comments on tree pit condition here</string>
+    <string name="choose_tree_type_here">Choose tree type here</string>
     <string name="welcome_user">Welcome, User!</string>
     <string name="locate_me">Locate me!</string>
     <string name="species_will_be_here">Species will be here</string>
-    <string name="addres_will_be_here">Addres will be here</string>
+    <string name="addres_will_be_here">Address will be here</string>
     <string name="map">Map</string>
     <string name="pics">Pics</string>
     <string name="tree_name">Tree Name:</string>
@@ -118,7 +118,7 @@
     <string name="by_volunteer">By volunteer:</string>
     <string name="date_modified">Date modified:</string>
     <string name="tree_type">Tree type:</string>
-    <string name="tree_diametr">Tree diametr:</string>
+    <string name="tree_diametr">Tree diameter:</string>
     <string name="tree_size">Tree size:</string>
     <string name="remove">Remove:</string>
     <string name="biotic_damage">Biotic damage:</string>
@@ -158,4 +158,37 @@
     <string name="upload_leaf_photo">Upload leaf photo</string>
     <string name="do_you_want_to_proceed_with_this_identified_data">Do you want to proceed with this identified data?</string>
     <string name="all_other_identified_data_will_be_displayed_on_the_next_forms">*all other identified data will be displayed on the next forms</string>
+    <string name="treename">TreeName</string>
+    <string name="update_history">Update History</string>
+    <string name="supporting_photo">Do you want to upload a supporting photo?</string>
+    <string name="yes">Yes</string>
+    <string name="back_to_tree">Back to Tree</string>
+    <string name="image_description">Image description</string>
+    <string name="tree_name_etc">Tree Name...</string>
+    <string name="confirm_delete_tree">Confirm DELETE tree?</string>
+    <string name="confirm">Confirm</string>
+    <string name="back">Back</string>
+    <string name="tree_pit_picture">Tree Pit Picture</string>
+    <string name="save_pics">Save pics</string>
+    <string name="species">Species:</string>
+    <string name="update">Update</string>
+    <string name="tree_name_lower">tree name</string>
+    <string name="loading">Loading</string>
+    <string name="login_will_be_here">Login will be here</string>
+    <string name="login_temporarily">Login (temporarily)</string>
+    <string name="species_num">Species+Num</string>
+    <string name="add_history">Add History</string>
+    <string name="show_history">Show History</string>
+    <string name="diameter">Diameter:</string>
+    <string name="_10_ft">10 ft</string>
+    <string name="_30_ft">30 ft</string>
+    <string name="_100_ft">100 ft</string>
+    <string name="_50_000_ft">50,000 ft</string>
+    <string name="welcome_screen">Welcome Screen</string>
+    <string name="new_tree">New Tree</string>
+    <string name="tree_list_in_area">List of Trees in Your Area</string>
+    <string name="tree_list_filtered">Filtered Tree List</string>
+    <string name="make_a_photo">Take a Photo</string>
+    <string name="logout">Logout</string>
+    <string name="exit">Exit</string>
 </resources>

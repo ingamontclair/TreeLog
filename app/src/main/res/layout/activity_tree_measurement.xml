@@ -34,7 +34,7 @@
         android:id="@+id/edit_treetype"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/chose_tree_type_from_list"
+        android:hint="@string/choose_tree_type_from_list"
         />
     <TextView
         android:layout_width="wrap_content"

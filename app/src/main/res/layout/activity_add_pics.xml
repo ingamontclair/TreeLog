@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/regular_button"
-        android:text="Save pics"
+        android:text="@string/save_pics"
         />
-<ListView
-    android:scrollbarAlwaysDrawVerticalTrack="true"
-    android:id="@+id/list_new_pics"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <ListView
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:id="@+id/list_new_pics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</ListView>
+    </ListView>
 
 </LinearLayout>

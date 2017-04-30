@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.montclair.puma.treelog.AddEvent">
-<TextView
-    android:id="@+id/tv_event_treeName"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="TreeName"
-    />
+    <TextView
+        android:id="@+id/tv_event_treeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/treename"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Diametr:"
+        android:text="@string/diameter"
         />
     <EditText
         android:id="@+id/edit_event_diametr"
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tree size:"
+        android:text="@string/tree_size"
         />
     <EditText
         android:id="@+id/edit_event_size"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Biotic damage:"
+        android:text="@string/biotic_damage"
         />
     <EditText
         android:id="@+id/edit_event_biotic"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abiotic damage:"
+        android:text="@string/abiotic_damage"
         />
     <EditText
         android:id="@+id/edit_event_a_biotic"
@@ -88,15 +88,14 @@
         android:text="@string/remove_tree"
         android:onClick="onHazardClicked"
         />
+
     <Button
         android:id="@+id/btn_event_commit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/regular_button"
         android:layout_marginTop="3dp"
-        android:text="Update History"
-        />
-
+        android:background="@drawable/regular_button"
+        android:text="@string/update_history" />
 
 
 </LinearLayout>

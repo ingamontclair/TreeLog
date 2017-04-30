@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeSession;
@@ -97,15 +98,24 @@ public class TreeMeasurement extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_next_meas) {
-//TODO: validate all fields and show alerts
-                TreeData treeData = TreeSession.getInstance().getTreeData();
-                treeData.setSpecies(editSpecies.getText().toString());
-                treeData.setTreeType(editTreeType.getText().toString());
-                treeData.setDatePlanted(editPlanted.getText().toString());
-                treeData.setTreeDiametr(editTreeDiametr.getText().toString());
-                treeData.setTreeSize(editTreeSize.getText().toString());
-                Intent intent = new Intent(TreeMeasurement.this, TreePit.class);
-                startActivity(intent);
+                String typeTxt = editTreeType.getText().toString();
+                String dateTxt = editPlanted.getText().toString();
+                String dmtrTxt = editTreeDiametr.getText().toString();
+                String sizeTxt = editTreeSize.getText().toString();
+                String specTxt = editSpecies.getText().toString();
+                if  (typeTxt.equals("")|| dateTxt.equals("")|| dmtrTxt.equals("")||
+                        sizeTxt.equals("") || specTxt.equals("")){
+                    Toast.makeText(TreeMeasurement.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    TreeData treeData = TreeSession.getInstance().getTreeData();
+                    treeData.setSpecies(specTxt);
+                    treeData.setTreeType(typeTxt);
+                    treeData.setDatePlanted(dateTxt);
+                    treeData.setTreeDiametr(dmtrTxt);
+                    treeData.setTreeSize(sizeTxt);
+                    Intent intent = new Intent(TreeMeasurement.this, TreePit.class);
+                    startActivity(intent);
+                }
             }
         }
     }

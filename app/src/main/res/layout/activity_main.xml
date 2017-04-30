@@ -17,12 +17,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login will be here" />
+        android:text="@string/login_will_be_here" />
     <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login (temporarely)"
+        android:text="@string/login_temporarily"
         />
 </LinearLayout>
 </ScrollView>

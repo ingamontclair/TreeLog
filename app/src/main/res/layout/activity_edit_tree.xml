@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tree Name" />
+        android:text="@string/tree_name" />
     <EditText
         android:id="@+id/update_tree_name"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Street Address" />
+        android:text="@string/street_address" />
     <EditText
         android:id="@+id/update_tree_street"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Latitude" />
+        android:text="@string/latitude_label" />
     <EditText
         android:id="@+id/update_latitude"
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Longitude" />
+        android:text="@string/longitude_label" />
     <EditText
         android:id="@+id/update_longitude"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Species" />
+        android:text="@string/species" />
     <EditText
         android:id="@+id/update_species"
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tree type" />
+        android:text="@string/tree_type" />
     <EditText
         android:id="@+id/update_tree_type"
         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Property type" />
+        android:text="@string/property_type" />
     <EditText
         android:id="@+id/update_property_type"
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
     <Button
         android:id="@+id/btn_updateTree"
         android:background="@drawable/regular_button"
-        android:text="Update"
+        android:text="@string/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

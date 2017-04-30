@@ -14,8 +14,8 @@ public class TreeData implements Serializable {
     private String latitude;
     private String longitude;
     private String streetAddress;
-    private String propertyType; //private of city
-    private String species; //unique species, like wiki name
+    private String propertyType; //designate tree as on private or city property
+    private String species; //unique species name, as in the binomial nomenclature aka latin name
     private String treeType; //all tree types listed in tree_type array in Strings.xml
     private String datePlanted; // calendar
     private String treeDiametr;

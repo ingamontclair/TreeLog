@@ -10,13 +10,13 @@ import java.util.List;
  */
 
 public class TreeHistoryData implements Serializable{
-    private String treeHistoryID; //primaty ID for new stage of the tree
+    private String treeHistoryID; //primary ID for new stage of the tree
     private String treeID; // for existing tree
     private String userID; //for existing user
     private String entryDate; //current date as modified
     private String treeTrunkPicURL; //URL for trunk picture changed
-    private String treeHistoryDiametr; //history of diameter changin
-    private String treeHistorySize; //history of size changing
+    private String treeHistoryDiametr; //history of diameter changes
+    private String treeHistorySize; //history of size changes
     private String treeHistoryBiotic; //history of biotic changes
     private String treeHistory_a_Biotic; //history of abiotic changes
     private String treeHistoryPitURL; //URL of tree pit changed

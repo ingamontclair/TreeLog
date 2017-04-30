@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.montclair.puma.treelog.models.TreeData;
 import com.montclair.puma.treelog.models.TreeSession;
@@ -151,13 +152,21 @@ public class LocateNewTree extends LocationActivity {
             //bean to save the obtained data for the next page
             if (view.getId() == R.id.btn_next_locate) {
                 //showToast("Next page clicked");
-                TreeData treeData = TreeSession.getInstance().getTreeData();
-                treeData.setLatitude(mLatitudeText.getText().toString());
-                treeData.setLongitude(mLongitudeText.getText().toString());
-                treeData.setStreetAddress(mAddressText.getText().toString());
-                treeData.setPropertyType(editPropertyType.getText().toString());
-                Intent intent = new Intent(LocateNewTree.this, LeafIdentification.class);
-                startActivity(intent);
+                String longTxt = mLongitudeText.getText().toString();
+                String latTxt = mLatitudeText.getText().toString();
+                String addrTxt = mAddressText.getText().toString();
+                String propTxt = editPropertyType.getText().toString();
+                if (latTxt.equals("")|| longTxt.equals("")|| addrTxt.equals("")|| propTxt.equals("")) {
+                    Toast.makeText(LocateNewTree.this, "Please fill all fields.", Toast.LENGTH_SHORT).show();
+                } else {
+                    TreeData treeData = TreeSession.getInstance().getTreeData();
+                    treeData.setLatitude(mLatitudeText.getText().toString());
+                    treeData.setLongitude(mLongitudeText.getText().toString());
+                    treeData.setStreetAddress(mAddressText.getText().toString());
+                    treeData.setPropertyType(editPropertyType.getText().toString());
+                    Intent intent = new Intent(LocateNewTree.this, LeafIdentification.class);
+                    startActivity(intent);
+                }
             }
         }
     }

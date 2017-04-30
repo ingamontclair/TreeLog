@@ -228,46 +228,54 @@ public class AddEvent extends AppCompatActivity {
     class CommitEventLstr implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.btn_event_commit) {
-                TreeData treeData = TreeSession.getInstance().getTreeData();
-                //TreeHistoryData treeHistoryData = new TreeHistoryData();
-                TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
-                User user = TreeSession.getInstance().getUser();
-                TreeImageData treeimageData = TreeSession.getInstance().getTreeImageData();
+            String diamTxt = editEventDiametr.getText().toString();
+            String sizeTxt = editEventSize.getText().toString();
+            String bioTxt = editEventBiotic.getText().toString();
+            String aBioTxt = editEventAbiotic.getText().toString();
+            if (diamTxt.equals("")&&sizeTxt.equals("")&&bioTxt.equals("")&&aBioTxt.equals("")) {
+                Toast.makeText(AddEvent.this, "No information was added to the history",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                if (view.getId() == R.id.btn_event_commit) {
+                    TreeData treeData = TreeSession.getInstance().getTreeData();
+                    //TreeHistoryData treeHistoryData = new TreeHistoryData();
+                    TreeHistoryData treeHistoryData = TreeSession.getInstance().getTreeHistoryData();
+                    User user = TreeSession.getInstance().getUser();
+                    TreeImageData treeimageData = TreeSession.getInstance().getTreeImageData();
 
 
-                treeHistoryData.setTreeID(treeData.getTreeId());
-                treeHistoryData.setUserID(user.getUserID());
-                Calendar c = Calendar.getInstance();
-                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-                String dateModyfied = df.format(c.getTime());
-                treeHistoryData.setEntryDate(dateModyfied);
-                treeHistoryData.setTreeTrunkPicURL("");
-                treeHistoryData.setTreeHistoryDiametr(editEventDiametr.getText().toString());
-                treeHistoryData.setTreeHistoryDiametr(editEventSize.getText().toString());
-                treeHistoryData.setTreeHistoryBiotic(editEventBiotic.getText().toString());
-                treeHistoryData.setTreeHistory_a_Biotic(editEventAbiotic.getText().toString());
-                treeHistoryData.setTreeHistoryPitURL("");
-                treeHistoryData.setTreeHistoryPitComments("");
-                //treeHistoryData.setTreeImageUri(TreeSession.getInstance().getTreeHistoryData().getTreeImageUri());
+                    treeHistoryData.setTreeID(treeData.getTreeId());
+                    treeHistoryData.setUserID(user.getUserID());
+                    Calendar c = Calendar.getInstance();
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+                    String dateModyfied = df.format(c.getTime());
+                    treeHistoryData.setEntryDate(dateModyfied);
+                    treeHistoryData.setTreeTrunkPicURL("");
+                    treeHistoryData.setTreeHistoryDiametr(diamTxt);
+                    treeHistoryData.setTreeHistoryDiametr(sizeTxt);
+                    treeHistoryData.setTreeHistoryBiotic(bioTxt);
+                    treeHistoryData.setTreeHistory_a_Biotic(aBioTxt);
+                    treeHistoryData.setTreeHistoryPitURL("");
+                    treeHistoryData.setTreeHistoryPitComments("");
+                    //treeHistoryData.setTreeImageUri(TreeSession.getInstance().getTreeHistoryData().getTreeImageUri());
 
-                //Log.d("Tree History Uri",""+treeHistoryData.getTreeImageUri().toString());
-                //get hazard from checked types
-                String tmpHazard = "";
-                for (String s : hazard.keySet()) {
-                    tmpHazard += s;
-                    tmpHazard += ", ";
-                }
+                    //Log.d("Tree History Uri",""+treeHistoryData.getTreeImageUri().toString());
+                    //get hazard from checked types
+                    String tmpHazard = "";
+                    for (String s : hazard.keySet()) {
+                        tmpHazard += s;
+                        tmpHazard += ", ";
+                    }
 
-                if (tmpHazard.length() > 0) {
-                    tmpHazard = tmpHazard.replaceFirst(", $", "");
-                }
-                treeHistoryData.setTreeHistoryHazard(tmpHazard);
-                DatabaseReference myref = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_HISTORY_DATA);
-                //insert new record of thee History Update
-                DatabaseReference thdRef = myref.push(); //generate a unique key for a new history record
-                treeHistoryData.setTreeHistoryID(thdRef.getKey());
-                thdRef.setValue(treeHistoryData); //set value
+                    if (tmpHazard.length() > 0) {
+                        tmpHazard = tmpHazard.replaceFirst(", $", "");
+                    }
+                    treeHistoryData.setTreeHistoryHazard(tmpHazard);
+                    DatabaseReference myref = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_HISTORY_DATA);
+                    //insert new record of thee History Update
+                    DatabaseReference thdRef = myref.push(); //generate a unique key for a new history record
+                    treeHistoryData.setTreeHistoryID(thdRef.getKey());
+                    thdRef.setValue(treeHistoryData); //set value
 
 
 
@@ -284,14 +292,14 @@ public class AddEvent extends AppCompatActivity {
                         } )
                 );*/
 
-                Toast.makeText(AddEvent.this, "New record in history was added", Toast.LENGTH_SHORT).show();
-                CustomDialogClass cdd = new CustomDialogClass(AddEvent.this);
-                cdd.show();
+                    Toast.makeText(AddEvent.this, "New record in history was added", Toast.LENGTH_SHORT).show();
+                    CustomDialogClass cdd = new CustomDialogClass(AddEvent.this);
+                    cdd.show();
 
-                //Intent intent = new Intent(AddEvent.this, TreeHistory.class);
-                //startActivity(intent);
+                    //Intent intent = new Intent(AddEvent.this, TreeHistory.class);
+                    //startActivity(intent);
+                }
             }
-
         }
     }
 

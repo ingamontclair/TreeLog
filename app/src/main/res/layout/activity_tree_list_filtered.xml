@@ -16,25 +16,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load10"
-            android:text="10 ft" />
+            android:text="@string/_10_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load30"
-            android:text="30 ft" />
+            android:text="@string/_30_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load100"
-            android:text="100 ft" />
+            android:text="@string/_100_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="load50000"
-            android:text="50,000 ft" />
+            android:text="@string/_50_000_ft" />
     </LinearLayout>
 
     <ListView

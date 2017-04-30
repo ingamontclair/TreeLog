@@ -13,13 +13,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tree pit information:"
+        android:text="@string/tree_pit_information"
         />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:contentDescription="@string/tree_pit_picture"
             android:id="@+id/img_pic"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -35,8 +36,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="Upload"
+                android:text="@string/upload"
                 android:background="@drawable/regular_button"
                 android:onClick="uploadTreePic"
                 />
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:background="@drawable/regular_button"
                 android:onClick="deleteTreePic"
                 />
@@ -56,24 +56,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Comments:"
-        />
-    <EditText
-        android:id="@+id/edit_comments"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="places comments on tree pit condition here"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/comments"
+            />
+        <EditText
+            android:id="@+id/edit_comments"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="@string/place_comments_on_tree_pit_condition_here"
+            />
     </LinearLayout>
     <Button
         android:id="@+id/btn_pit_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/regular_button"
-        android:text="Next"
+        android:text="@string/next"
         />
 </LinearLayout>

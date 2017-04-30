@@ -32,7 +32,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload"
+                android:text="@string/upload"
                 android:id="@+id/btn_upload_final_pic"
                 android:onClick="uploadFinalTreePic"
                 android:background="@drawable/regular_button"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:onClick="deleteFinalTreePic"
                 android:background="@drawable/regular_button"
                 />
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tree name generated:"
+            android:text="@string/tree_name_generated"
             android:layout_weight="0.24"
             />
 
@@ -64,7 +64,7 @@
             android:id="@+id/tv_tree_uniqID"
             android:layout_width="46dp"
             android:layout_height="wrap_content"
-            android:text="Species+Num"
+            android:text="@string/species_num"
             android:layout_weight="0.77" />
     </LinearLayout>
     <LinearLayout
@@ -74,14 +74,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date created:"
+            android:text="@string/date_created"
             android:layout_weight="1"
             />
         <TextView
             android:id="@+id/tv_dateCreated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date created:"
+            android:text="@string/date_created"
             android:layout_weight="1"
             />
     </LinearLayout>
@@ -93,15 +93,16 @@
         >
         <ImageView
             android:id="@+id/small_tree_pic"
-            android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_width="0dp"
             android:src="@drawable/noimageicon23"
             android:layout_weight="1"
             />
         <Button
-            android:layout_width="174dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Pick tree Icon (optional)"
+            android:text="@string/pick_tree_icon_optional"
             android:background="@drawable/regular_button"
             />
     </LinearLayout>
@@ -111,6 +112,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/regular_button"
-        android:text="Save tree to Database"
+        android:text="@string/save_tree_to_database"
         />
 </LinearLayout>

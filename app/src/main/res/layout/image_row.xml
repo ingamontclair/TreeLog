@@ -11,15 +11,15 @@
     <LinearLayout android:id="@+id/thumbnail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="3dip"
+        android:padding="3dp"
         android:layout_alignParentLeft="true"
         android:background="@drawable/image_bg"
-        android:layout_marginRight="5dip">
+        android:layout_marginRight="5dp">
 
         <ImageView
             android:id="@+id/list_image"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:src="@drawable/tree"/>
 
     </LinearLayout>
@@ -31,10 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Image description"
+        android:text="@string/image_description"
         android:textColor="#040404"
         android:typeface="sans"
-        android:textSize="15dip"
+        android:textSize="15sp"
         android:textStyle="bold"/>
 
     <!-- Stree address -->
@@ -44,10 +44,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_images_imageDescription"
         android:textColor="#343434"
-        android:textSize="10dip"
-        android:layout_marginTop="1dip"
+        android:textSize="10sp"
+        android:layout_marginTop="1dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Tree Name..." />
+        android:text="@string/tree_name_etc" />
 
     <!-- Rightend Arrow -->
     <ImageView android:layout_width="wrap_content"

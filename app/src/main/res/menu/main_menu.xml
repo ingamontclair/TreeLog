@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_welcome"
-        android:title="Welcome Screen"
+        android:title="@string/welcome_screen"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_new_tree"
-        android:title="New Tree" />
+        android:title="@string/new_tree" />
     <item
         android:id="@+id/menu_list_tree"
-        android:title="Tree List in area" />
+        android:title="@string/tree_list_in_area" />
     <item
         android:id="@+id/menu_list_tree_filtered"
-        android:title="Tree List Filtered" />
+        android:title="@string/tree_list_filtered" />
     <item
         android:id="@+id/menu_make_photo"
-        android:title="Make a photo" />
+        android:title="@string/make_a_photo" />
     <item
         android:id="@+id/menu_map"
-        android:title="Map" />
+        android:title="@string/map" />
     <item
         android:id="@+id/menu_logout"
-        android:title="Logout" />
+        android:title="@string/logout" />
     <item
         android:id="@+id/menu_exit"
-        android:title="Exit" />
+        android:title="@string/exit" />
 </menu>

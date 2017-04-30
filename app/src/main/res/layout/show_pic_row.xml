@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
-    android:padding="5dip">
+    android:padding="5dp">
 
 
     <!--  ListRow Left side Thumbnail image -->
@@ -14,12 +14,12 @@
         android:padding="3dip"
         android:layout_alignParentLeft="true"
         android:background="@drawable/image_bg"
-        android:layout_marginRight="110dip">
+        android:layout_marginRight="110dp">
 
         <ImageView
             android:id="@+id/list_image"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:src="@drawable/tree"/>
 
     </LinearLayout>

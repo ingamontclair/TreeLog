@@ -33,7 +33,7 @@
         android:id="@+id/edit_tree_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="tree name"
+        android:hint="@string/tree_name_lower"
         />
     <TextView
         android:layout_width="wrap_content"
