@@ -54,7 +54,7 @@ public class CustomizedTreeImagesListAdapter extends ArrayAdapter<TreeImages> {
         if(treeImages.getTreeImageURL() !=null){
             Picasso.with(msgPic.getContext())
                     .load(treeImages.getTreeImageURL())
-                    .resize(50,50)
+                    .resize(200,200)
                     .centerCrop()
                     .into(msgPic);
         }

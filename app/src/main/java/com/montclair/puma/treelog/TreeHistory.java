@@ -72,8 +72,6 @@ public class TreeHistory extends BaseActivity {
         tv_property_type = (TextView) findViewById(R.id.tv_property_type);
         tv_date_created = (TextView) findViewById(R.id.tv_date_created);
         tv_vol_creator = (TextView) findViewById(R.id.tv_vol_creator_name);
-//        tv_date_modified = (TextView)findViewById(R.id.tv_date_modyfied);
-//        tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
         tv_tree_type = (TextView) findViewById(R.id.tv_tree_type);
         tv_tree_diametr = (TextView) findViewById(R.id.tv_tree_diametr);
         tv_tree_size = (TextView) findViewById(R.id.tv_tree_size);
@@ -83,26 +81,16 @@ public class TreeHistory extends BaseActivity {
         tv_hazard = (TextView) findViewById(R.id.tv_tree_hazard);
         tv_tree_pit_comments = (TextView) findViewById(R.id.tv_tree_pit);
         img_main_pic = (ImageView) findViewById(R.id.iv_main_picture);
-
         btnShowPics=(Button)findViewById(R.id.btn_pics);
         btnShowPics.setOnClickListener(new showTreePics());
-
         btnEdit = (Button) findViewById(R.id.btn_Edit_tree);
-
         btnEdit.setOnClickListener(new EditTreeLstr());
-
         btnMaps = (Button) findViewById(R.id.btn_map);
         btnMaps.setOnClickListener(new MapBtnLstr());
-
-        //btnPics = (Button) findViewById(R.id.btn_pics);
-        //btnPics.setOnClickListener(new ImagesListLstr());
         btnAddEvent = (Button) findViewById(R.id.btn_add_event);
         btnAddEvent.setOnClickListener(new AddTreeEventLstr());
         btnShowHistory = (Button) findViewById(R.id.btn_HistoryData);
         btnShowHistory.setOnClickListener(new ShowHistoryLstr());
-        //btnAddPics = (Button) findViewById(R.id.btn_add_pics);
-        //btnAddPics.setOnClickListener(new AddPicsLstr());
-
         btnDeleteTree = (Button) findViewById(R.id.btn_delete_tree);
         btnDeleteTree.setOnClickListener(new DeleteTreeLstr());
 
@@ -122,9 +110,7 @@ public class TreeHistory extends BaseActivity {
                         .resize(150, 150)
                         .centerCrop()
                         .into(img_main_pic);
-            }//tv_vol_creator.setText(treeData.);
-            //tv_date_modified.setText(treeData.getD);
-            //tv_vol_modified = (TextView)findViewById(R.id.tv_modified_volunteer);
+            }
             tv_tree_type.setText(treeData.getTreeType());
             tv_tree_diametr.setText(treeData.getTreeDiametr());
             tv_tree_size.setText(treeData.getTreeSize());
@@ -133,7 +119,7 @@ public class TreeHistory extends BaseActivity {
             tv_a_biotic.setText(treeData.getA_bioticDamage());
             tv_hazard.setText(treeData.getTreeHazard());
             tv_tree_pit_comments.setText(treeData.getTreePitComments());
-            Toast.makeText(getApplicationContext(), "Tree ID: " + treeData.getTreeId(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Tree ID: " + treeData.getTreeId(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -141,35 +127,11 @@ public class TreeHistory extends BaseActivity {
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.btn_Edit_tree) {
-                //TreeData treeData = TreeSession.getInstance().getTreeData();
                 Intent intent = new Intent(TreeHistory.this, EditTree.class);
                 startActivity(intent);
             }
-
         }
     }
-
-    class ImagesListLstr implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.btn_pics) {
-                Intent intent = new Intent(TreeHistory.this, TreeImagesList.class);
-                startActivity(intent);
-            }
-        }
-    }
-
-/*    class AddPicsLstr implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.btn_add_pics) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image*//*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
-            }
-        }
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -201,18 +163,12 @@ public class TreeHistory extends BaseActivity {
 
         }
 
-        //TreeImageData treeImageData=TreeSession.getInstance().getTreeImageData();
-
         TreeSession treeSession = TreeSession.getInstance();
         TreeImageData treeImageData = new TreeImageData();
-
         treeImageData.setTreeImages(mBitmapsSelected);
         treeImageData.setTreeImmageUri(mArrayUri);
-
         treeSession.setTreeImageData(treeImageData);
         Intent intent = new Intent(TreeHistory.this, AddPics.class);
-        //intent.putStringArrayListExtra("URIList",mArrayUri);
-        //intent.putStringArrayListExtra("selectedImages",mBitmapsSelected);
         startActivity(intent);
     }
 
@@ -224,7 +180,6 @@ public class TreeHistory extends BaseActivity {
                         .putExtra("address", tv_tree_street_address.getText().toString())
                         .putExtra("longitude", treeData.getLongitude())
                         .putExtra("latitude", treeData.getLatitude()));
-
             }
         }
     }
@@ -279,8 +234,8 @@ public class TreeHistory extends BaseActivity {
                 case R.id.btn_deleteNo:
                     dismiss();
                     break;
-
                 case R.id.btn_deleteYes:
+                    //query to delete a chosen tree
                     TreeData treeData = TreeSession.getInstance().getTreeData();
                     DatabaseReference myref = FireBase.getInstance().getFireBaseReference(Constants.FIRBASE_TREE_DATA);
                     DatabaseReference treeRef = myref.child(treeData.getTreeId());

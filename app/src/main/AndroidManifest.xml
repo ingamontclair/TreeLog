@@ -78,7 +78,8 @@
         <activity android:name=".AddEvent" />
         <activity android:name=".TreeListFiltered" />
         <activity android:name=".ShowHistory" />
-        <activity android:name=".ShowTreeImages"></activity>
+        <activity android:name=".ShowTreeImages" />
+        <activity android:name=".ShowTreeHistoryPics"></activity>
     </application>
 
 </manifest>
