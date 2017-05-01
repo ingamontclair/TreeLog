@@ -11,56 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4"
-        >
+        android:weightSum="4">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="load10"
-            android:background="@drawable/regular_button"
-            android:layout_weight="1"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="1dp"
             android:layout_marginRight="2dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:text="10 ft" />
+            android:layout_weight="1"
+            android:background="@drawable/regular_button"
+            android:onClick="load10"
+            android:text="@string/_10_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/regular_button"
             android:onClick="load30"
-            android:background="@drawable/regular_button"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="1"
-            android:text="30 ft" />
+            android:text="@string/_30_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/regular_button"
             android:onClick="load100"
-            android:background="@drawable/regular_button"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="1"
-            android:text="100 ft" />
+            android:text="@string/_100_ft" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="load50000"
-            android:background="@drawable/regular_button"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="1dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
             android:layout_weight="1"
-            android:text="50,000 ft" />
+            android:background="@drawable/regular_button"
+            android:onClick="load500"
+            android:text="@string/_500_ft" />
     </LinearLayout>
 
     <ListView

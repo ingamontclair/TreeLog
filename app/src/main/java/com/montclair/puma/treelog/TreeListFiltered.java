@@ -61,8 +61,8 @@ public class TreeListFiltered extends LocationActivity {
         load(30);
     }
 
-    public void load50000(View view) {
-        load(15240);
+    public void load500(View view) {
+        load(152);
     }
 
     public void load(final int distanceInMeters) {

@@ -183,7 +183,7 @@
     <string name="_10_ft">10 ft</string>
     <string name="_30_ft">30 ft</string>
     <string name="_100_ft">100 ft</string>
-    <string name="_50_000_ft">50,000 ft</string>
+    <string name="_500_ft">500 ft</string>
     <string name="welcome_screen">Welcome Screen</string>
     <string name="new_tree">New Tree</string>
     <string name="tree_list_in_area">List of Trees in Your Area</string>
