@@ -191,4 +191,6 @@
     <string name="make_a_photo">Take a Photo</string>
     <string name="logout">Logout</string>
     <string name="exit">Exit</string>
+    <string name="facebook_app_id">1882738315278178</string>
+    <string name="fb_login_protocol_scheme">fb1882738315278178</string>
 </resources>
