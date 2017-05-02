@@ -241,6 +241,7 @@ public class Login extends AppCompatActivity {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
+        //else login with facebook
         else  if (FacebookSdk.isFacebookRequestCode(requestCode)){
 
             mCallbackManager.onActivityResult(requestCode, resultCode, data);
